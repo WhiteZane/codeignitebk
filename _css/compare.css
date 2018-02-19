@@ -1,0 +1,155 @@
+@charset "UTF-8";
+/* Simple fluid media
+   Note: Fluid media requires that you remove the media's height and width attributes from the HTML
+   http://www.alistapart.com/articles/fluid-images/ 
+*/
+img, object, embed, video {
+	max-width: 100%;
+}
+/* IE 6 does not support max-width so default to width 100% */
+.ie6 img {
+	width:100%;
+}
+
+
+
+
+/* Desktop Layout: 769px to a max of 1232px.  Inherits styles from: Mobile Layout and Tablet Layout. */
+
+@media only screen and (min-width: 200px) {
+.gridContainer {
+	width: 88.2%;
+	max-width: 1232px;
+	padding-left: 0.9%;
+	padding-right: 0.9%;
+	margin: auto;
+}
+
+.hero{
+	width:100%;
+	background-color:white;
+	height:auto;
+	padding:20px;
+	
+		
+}
+
+.herotext{
+	font-size:100px;
+	margin-top:-200px;	
+}
+
+
+
+.tableCNT{
+	width:100%;
+	height:auto;
+	background-color:whitesmoke;
+	
+	
+}
+
+.comparetable{
+	width: 100%;
+	border: 1px solid darkgray;
+	color:white;
+	font-family:Tahoma, Geneva, sans-serif;	
+	
+	
+}
+.title{
+	text-align:center;
+	font-size:40px;
+	Color:darkgreen;
+		
+}
+
+.wowprice{
+	font-size:40px;
+	color:#3943DC;	
+}
+.crapprice{
+	color:red;
+	font-size:24px;	
+}
+
+
+
+.comparetable tr td{
+	color:#191919;
+	padding:10px;
+	border-style:none;	
+}
+
+.comparetable tr:nth-child(2n+3){
+	background-color:#E8F5F8;
+	
+}
+.comparetable tr:nth-child(2n){
+	background-color:#FAFCFD;	
+}
+.comparetable tr td:nth-child(1){
+	font-weight:bold;
+	color:#646464;
+	font-size:16px;
+	width:300px;	
+}
+
+.comparetable tr:nth-child(1) td{
+	
+	color:darkblue;
+	font-size:28px;	
+	text-align: center;
+}
+
+.lindsey{
+	font-family:Georgia, "Times New Roman", Times, serif;	
+}
+.jones{
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight: bold;	
+}
+.subtext{
+	font-size:9px;
+}
+
+.tm{
+	font-size:9px;	
+}
+
+.suptext{
+	font-size:16px;
+	
+}
+.kettering{
+	font-size:smaller;	
+}
+
+.contact{
+	font-size:18px;
+	color:blue;
+	padding-left: 20px;
+	font-family:Tahoma, Geneva, sans-serif;
+	
+		
+}
+
+.foot{
+	width:100%;
+	height: auto;
+	padding:20px;
+	text-align:center;
+	background-color:darkgreen;
+	color:beige;
+	margin-top: 50px;
+	font-size:12px;	
+}
+
+
+}
+
+
+
+
+
+}
