@@ -10,9 +10,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LindseyJones vs Kettering</title>
 <link rel = "stylesheet" type = "text/css" 
-         href = "<?php echo base_url(); ?>_css/compare.css">
+         href = "<?php echo site_url(); ?>_css/compare.css">
 <link rel = "stylesheet" type = "text/css" 
-         href = "<?php echo base_url(); ?>_css/respiratoryreview/boilerplate.css">
+         href = "<?php echo site_url(); ?>_css/respiratoryreview/boilerplate.css">
 
 <!-- 
 To learn more about the conditional comments around the html tags at the top of the file:
@@ -27,11 +27,11 @@ Do the following if you're using your customized build of modernizr (http://www.
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-<script type = 'text/javascript' src = "<?php echo base_url(); ?>_js/respond.min.js"></script> 
+<script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/respond.min.js"></script> 
 </head>
 <body>
 <div class="gridContainer clearfix">
-<div class="hero" ><img src = "<?php echo base_url(); ?>Images/Logosmall.png" alt="LindseyJones"></div>
+<div class="hero" ><img src = "<?php echo site_url(); ?>Images/Logosmall.png" alt="LindseyJones"></div>
 <div class="contact"><a href="http://www.lindsey-jones.com">Home</a> | <a href="http://www.lindsey-jones.com/Selfstudy.html">LindseyJones Product Catalog</a></div>
 <div class="title"><span class="suptext">2016 TMC and Clinical Simulation HomeStudy Course Comparison Chart</span><br/><span class ="lindsey">Lindsey</span><span class="jones">Jones</span><span class="tm">TM</span> <span class="kettering">vs. Kettering National Seminars</span><span class="tm">TM</span><br/><span class="subtext">Analysis completed May 11th, 2016</span></div>
 <div class="tableCNT">
