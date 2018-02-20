@@ -1,3 +1,3 @@
-		<em>&copy; 2018</em>
-	</body>
+	<div class="foot">LindseyJones (c) 2016. <br/>Kettering and Kettering National Seminars is a trademark of Kettering National Seminars.  <br/>Use of the the trademark associted with Kettering National Seminars is intended for fair camparison only for the benefit of the consumer in comparing LindseyJones and Kettering National Seminars.  <br/>Such use is protected under the fair use doctrine. LindseyJones is not associated with Kettering National Semianars or the company called Kettering or the town of Kettering, Ohio.</div>
+</body>
 </html>

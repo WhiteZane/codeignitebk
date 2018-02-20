@@ -1,35 +1,3 @@
-<!doctype html>
-<!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
-<!--[if IE 7]>    <html class="ie7 oldie"> <![endif]-->
-<!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="">
-<!--<![endif]-->
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LindseyJones vs Kettering</title>
-<link rel = "stylesheet" type = "text/css" 
-         href = "<?php echo site_url(); ?>_css/compare.css">
-<link rel = "stylesheet" type = "text/css" 
-         href = "<?php echo site_url(); ?>_css/respiratoryreview/boilerplate.css">
-
-<!-- 
-To learn more about the conditional comments around the html tags at the top of the file:
-paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
-
-Do the following if you're using your customized build of modernizr (http://www.modernizr.com/):
-* insert the link to your js here
-* remove the link below to the html5shiv
-* add the "no-js" class to the html tags at the top
-* you can also remove the link to respond.min.js if you included the MQ Polyfill in your modernizr build 
--->
-<!--[if lt IE 9]>
-<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/respond.min.js"></script> 
-</head>
-<body>
 <div class="gridContainer clearfix">
 <div class="hero" ><img src = "<?php echo site_url(); ?>Images/Logosmall.png" alt="LindseyJones"></div>
 <div class="contact"><a href="http://www.lindsey-jones.com">Home</a> | <a href="http://www.lindsey-jones.com/Selfstudy.html">LindseyJones Product Catalog</a></div>
@@ -145,6 +113,4 @@ Do the following if you're using your customized build of modernizr (http://www.
 
 </div>
 
-<div class="foot">LindseyJones (c) 2016. <br/>Kettering and Kettering National Seminars is a trademark of Kettering National Seminars.  <br/>Use of the the trademark associted with Kettering National Seminars is intended for fair camparison only for the benefit of the consumer in comparing LindseyJones and Kettering National Seminars.  <br/>Such use is protected under the fair use doctrine. LindseyJones is not associated with Kettering National Semianars or the company called Kettering or the town of Kettering, Ohio.</div>
-</body>
-</html>
+
