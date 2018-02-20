@@ -1,5 +1,6 @@
+
 <h2><?php echo $title; ?></h2>
- 
+
 <table border='1' cellpadding='4'>
     <tr>
         <td><strong>Title</strong></td>
