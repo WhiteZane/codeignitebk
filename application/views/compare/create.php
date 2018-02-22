@@ -1,3 +1,4 @@
+
 <style>form{margin-left:25px;}.red{color:red;}</style>
 <h2><?php echo $title; ?></h2>
 

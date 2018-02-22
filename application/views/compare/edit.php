@@ -26,7 +26,13 @@
   </script>
 <h2><?php echo $title; ?></h2>
  
-<?php echo validation_errors(); ?>
+<?php echo validation_errors(); 
+/*if(session_id() == 'z') {
+    session_start();
+    } else{
+        exit();}*/
+    
+?>
  
 <?php echo form_open('compare/edit/'.$compare_item['id']); ?>
     <table>

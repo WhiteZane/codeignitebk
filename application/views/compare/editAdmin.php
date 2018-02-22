@@ -1,4 +1,12 @@
-
+<?php
+session_start();
+$sid = session_id();
+$sidcheck = session_id(md5('LindseyJones'));
+if($sid !== $sidcheck) {
+    $this->load->view('compare/fail');
+    exit();
+    } 
+?>
 <div class="gridContainer clearfix">
 <div class="hero" ><img src = "<?php echo site_url(); ?>Images/Logosmall.png" alt="LindseyJones"></div>
 <div class="contact"><a href="http://www.lindsey-jones.com">Home</a> | <a href="http://www.lindsey-jones.com/Selfstudy.html">LindseyJones Product Catalog</a></div>
