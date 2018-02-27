@@ -1,0 +1,1 @@
+echo $page_item['slug'];

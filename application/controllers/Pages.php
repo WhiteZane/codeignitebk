@@ -8,20 +8,17 @@
                         $this->load->model('compare_model');
                 }
 		
-		public function view ($slug = NULL, $page = "index"){
-			if (! file_exists(APPPATH.'views/compare/'.$page.'.php'))
+		public function view ($page = "index"){
+			if (! file_exists(APPPATH.'views/pages/'.$page.'.php'))
 			{
 				//whoops, we dont have a page for that!
 				show_404();
 			}
-			 $data['compare'] = $this->compare_model->get_compare();
-			//$this->load->helper('url');
-			$data['compare_item'] = $this->compare_model->get_compare($slug);
-			$data['title'] = $data['compare_item']['title'];
+			  $data['title'] = ucfirst($page); // Capitalize the first letter
 
-			$this->load->view('templates/header',$data);
-			$this->load->view('compare/'.$page, $data);
-			$this->load->view('templates/footer', $data);
+        		$this->load->view('templates/header', $data);
+        		$this->load->view('pages/'.$page, $data);
+        		$this->load->view('templates/footer', $data);
 		} 
 		
 	}

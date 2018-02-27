@@ -49,6 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+$route['pagebuilder/createRow'] = 'pageBuilder/createRow';
+$route['pagebuilder/create'] = 'pageBuilder/create';
+$route['pagebuilder/(:any)'] = 'pageBuilder/view/$1';
+$route['pagebuilder'] = 'pageBuilder';
 $route['compare/login'] = 'compare/login';
 $route['compare/edit/(:any)'] = 'compare/edit/$1';
 $route['compare/editAdmin'] = 'compare/editAdmin';
