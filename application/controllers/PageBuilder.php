@@ -11,27 +11,25 @@ class PageBuilder extends CI_Controller {
         public function index()
         {
                 $data['page'] = $this->pageBuilder_model->get_page();
-                $data['title'] = 'page archive';
+                $data['title'] = 'Page Archive';
 
                 $this->load->view('templates/header', $data);
                 $this->load->view('pagebuilder/index', $data);
                 $this->load->view('templates/footer');
         }
 
-        public function view($slug = NULL)
+        public function view($slug = NULL, $pageID = NULL)
         {
+        error_log($slug);        
+        error_log($pageID);        
         $data['page_item'] = $this->pageBuilder_model->get_page($slug);
-
+        /*$data['page_content'] = $this->pageBuilder_model->get_content($pageID);*/
+        
         if (empty($data['page_item']))
         {
                 show_404();
         }
 
-        
-        if (isset($_POST['page_item'])){        
-                
-                $data['pageName'] = $data['page_item']['pageName'];
-        }
 
         $this->load->view('templates/header', $data);
         $this->load->view('pagebuilder/view', $data);
@@ -69,6 +67,7 @@ class PageBuilder extends CI_Controller {
         {
             $this->load->helper('form');
             $this->load->library('form_validation');
+            $data['page'] = $this->pageBuilder_model->get_page();
 
             $data['title'] = 'Create a compare row';
 

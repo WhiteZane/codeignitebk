@@ -36,8 +36,12 @@
 <?php echo form_open('pagebuilder/createRow'); ?>
 
     <!--Builds the compare rows -->
-     <label for="pageID">Page Name</label><br />
-    <input type="input" name="pageID" /><br /><br />
+     <label for="pageID">Select Page Name</label><br /><br />
+      <select name="pageID">
+        <?php foreach ($page as $page_item): ?>
+            <option value='<?php echo $page_item["pageID"]; ?>'><?php echo $page_item['pageName']; ?></option>
+        <?php endforeach; ?>
+      </select><br /><br />
 
     <label for="cDescription"> Row description </label><br />
     <textarea name="cDescription"></textarea><br /><br />

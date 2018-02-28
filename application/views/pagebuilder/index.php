@@ -1,3 +1,6 @@
+<style >
+	body{margin-left:50px;}
+</style>
 <h2><?php echo $title; ?></h2>
 
 <?php foreach ($page as $page_item): ?>
@@ -6,6 +9,5 @@
         <div class="main">
                 <?php echo $page_item['pageHeaderTitle']; ?>
         </div>
-        <p><a href="<?php echo site_url('pagebuilder/'.$page_item['slug']); ?>">View article</a></p>
-
-<?php endforeach; ?>
+        <p><a href="<?php echo site_url("pagebuilder/{$page_item['slug']}"); ?>">View page</a></p>
+<?php endforeach; //{$page_item['pageID']}?>
