@@ -9,5 +9,6 @@
         <div class="main">
                 <?php echo $page_item['pageHeaderTitle']; ?>
         </div>
-        <p><a href="<?php echo site_url("pagebuilder/{$page_item['slug']}"); ?>">View page</a></p>
+        <p><a href="<?php echo site_url("pagebuilder/{$page_item['slug']}"); ?>"><button>View page</button></a>
+        <a class="button" href="<?php echo site_url('pagebuilder/editView/'.$page_item['pageID']); ?>"><button>Edit</button></a></p> 
 <?php endforeach; //{$page_item['pageID']}?>

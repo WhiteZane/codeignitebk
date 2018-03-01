@@ -49,20 +49,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+$route['pagebuilder/editContent/(:any)'] = 'pageBuilder/editContent/$1';
+$route['pagebuilder/editPage/(:any)'] = 'pageBuilder/editPage/$1';
+$route['pagebuilder/editView/(:any)'] = 'pageBuilder/editView/$1';
 $route['pagebuilder/createRow'] = 'pageBuilder/createRow';
 $route['pagebuilder/create'] = 'pageBuilder/create';
 $route['pagebuilder/(:any)'] = 'pageBuilder/view/$1';
 $route['pagebuilder'] = 'pageBuilder';
-$route['compare/login'] = 'compare/login';
+/*$route['compare/login'] = 'compare/login';
 $route['compare/edit/(:any)'] = 'compare/edit/$1';
 $route['compare/editAdmin'] = 'compare/editAdmin';
 $route['compare/create'] = 'compare/create';
 $route['compare/(:any)'] = 'compare/view/$1';
-$route['compare'] = 'compare';
+$route['compare'] = 'compare';*/
 //$route['test/create'] = 'test/create';
 //$route['test/(:any)'] = 'test/view/$1';
 //$route['test'] = 'test';
-$route['(:any)'] ='compare/view/$1';
+/*$route['(:any)'] ='compare/view/$1';*/
 $route['default_controller'] = 'pages/view';
 //$route['404_override'] = '';
 //$route['translate_uri_dashes'] = FALSE;
