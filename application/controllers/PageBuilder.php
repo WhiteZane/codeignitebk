@@ -8,15 +8,61 @@ class PageBuilder extends CI_Controller {
                 $this->load->helper('url_helper');
         }
 
-        public function index()
+        public function adminController()
         {
                 $data['page'] = $this->pageBuilder_model->get_page();
                 $data['title'] = 'Page Archive';
 
                 $this->load->view('templates/header', $data);
-                $this->load->view('pagebuilder/index', $data);
+                $this->load->view('pagebuilder/adminController', $data);
                 $this->load->view('templates/footer');
         }
+        public function index()
+        {
+                    $this->load->helper('form');
+                    $this->load->library('form_validation');
+
+                    $data['title'] = 'Login Here:';
+
+                    $this->form_validation->set_rules('username', 'User Name', 'required');
+                    $this->form_validation->set_rules('password', 'Password', 'required');
+
+
+                    if ($this->form_validation->run() === FALSE)
+                    {
+                        $this->load->view('templates/header', $data);
+                        $this->load->view('pagebuilder/index.php');
+                        $this->load->view('templates/footer');
+
+                    }
+                    else
+                    {
+                        $username = $_POST['username'];
+                        $password = $_POST['password'];
+                        //convert to md5
+                        $username_md5 = md5($username);
+                        $password_md5 = md5($password);
+                        $user = md5('admin');
+                        $pass = md5('Mededhse1');
+                        if ($username_md5 == $user && $password_md5 == $pass){
+                           $life=600;
+                           
+                           ini_set('session.use_strict_mode', 1);
+                           session_set_cookie_params($life);
+                           $sid = md5('LindseyJones');
+                            session_id($sid);
+
+                           session_start();
+
+                           redirect(base_url() . 'adminController');
+                        }else{
+                            $this->load->view('pagebuilder/fail');
+                        }
+                        
+                        
+                    }
+                }
+                
 
         public function view($slug = NULL, $pageID = NULL)
         {
@@ -60,38 +106,46 @@ class PageBuilder extends CI_Controller {
             else
             {
                 $this->pageBuilder_model->set_page();
-                redirect( base_url() . 'index.php/pagebuilder');
+                redirect( base_url() . 'adminController');
             }
         }
         public function createRow()
         {
-            $this->load->helper('form');
-            $this->load->library('form_validation');
-            $data['page'] = $this->pageBuilder_model->get_page();
-
-            $data['title'] = 'Create a compare row';
-
-            $this->form_validation->set_rules('pageID', 'Page Identification', 'required');
-            $this->form_validation->set_rules('cDescription', 'Describe the comparison', 'required');
-            $this->form_validation->set_rules('compare1', ' column 1', 'required');
-            $this->form_validation->set_rules('compare2', ' column 2', 'required');
-
-            if ($this->form_validation->run() === FALSE)
-            {
-                $this->load->view('templates/header', $data);
-                $this->load->view('pagebuilder/createRow');
-                $this->load->view('templates/footer');
-
+            $pageID = $this->uri->segment(2);
+            if (!empty($pageID)){
+               $data['currentpage'] = $pageID; 
             }
-            else
-            {
-                $this->pageBuilder_model->set_content();
-                redirect( base_url() . 'index.php/pagebuilder');
-            }
+
+
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+                $data['page'] = $this->pageBuilder_model->get_page();
+
+                $data['title'] = 'Create a compare row';
+
+                $this->form_validation->set_rules('pageID', 'Page Identification', 'required');
+                $this->form_validation->set_rules('cDescription', 'Describe the comparison', 'required');
+                $this->form_validation->set_rules('compare1', ' column 1', 'required');
+                $this->form_validation->set_rules('compare2', ' column 2', 'required');
+                $pageID = $this->input->post('pageID');
+                if ($this->form_validation->run() === FALSE)
+                {
+                    $this->load->view('templates/header', $data);
+                    $this->load->view('pagebuilder/createRow', $data);
+                    $this->load->view('templates/footer');
+
+                }
+                else
+                {
+                    $this->pageBuilder_model->set_content();
+                    redirect( base_url() . 'editView/'. $pageID);
+                }
+            
+        
         }
         public function editView()
         {
-                $pageID = $this->uri->segment(3);
+                $pageID = $this->uri->segment(2);
                 
                 if (empty($pageID))
                 {
@@ -110,7 +164,7 @@ class PageBuilder extends CI_Controller {
         }
         public function editPage()
         {
-                $pageID = $this->uri->segment(3);
+                $pageID = $this->uri->segment(2);
                 
                 
                 if (empty($pageID))
@@ -141,14 +195,14 @@ class PageBuilder extends CI_Controller {
                 else
                 {
                     $this->pageBuilder_model->set_page($pageID);
-                    redirect( base_url() . 'index.php/pagebuilder');
+                    redirect(base_url() . 'adminController');
                     //redirect( base_url() . '/pagebuilder');
                 }
         }
         public function editContent()
         {
-                $contentID = $this->uri->segment(3);
-                
+                $contentID = $this->uri->segment(2);
+               
                 
                 if (empty($contentID))
                 {
@@ -164,7 +218,7 @@ class PageBuilder extends CI_Controller {
                 $this->form_validation->set_rules('cDescription', 'Describe the comparison', 'required');
                 $this->form_validation->set_rules('compare1', ' column 1', 'required');
                 $this->form_validation->set_rules('compare2', ' column 2', 'required');
-         
+                $pageID = $this->input->post('pageID');
                 if ($this->form_validation->run() === FALSE)
                 {
                     $this->load->view('templates/header', $data);
@@ -176,7 +230,10 @@ class PageBuilder extends CI_Controller {
                 {
                     $this->pageBuilder_model->set_content($contentID);
                     //$this->load->view('news/success');
-                    redirect( base_url() . 'index.php/pagebuilder');
+                    redirect( base_url() . 'editView/' . $pageID);
                 }
         }
+
+
+                    
 }

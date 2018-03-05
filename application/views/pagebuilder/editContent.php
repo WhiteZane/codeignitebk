@@ -26,27 +26,34 @@
 });
   </script>
 <style >
-    form{margin-left:50px;}
+    form{margin-left:50px;
+        margin-bottom: 25px;
+    }
 </style>
 <h2><?php echo $title; ?></h2>
 
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('pagebuilder/editContent/'.$content_item['contentID']); ?>
+<?php echo form_open('editContent/'.$content_item['contentID']); ?>
 
     <!--Builds the compare rows -->
     
     <input type="hidden" name="pageID" value="<?php echo $content_item['pageID'];?>">
 
-    <label for="cDescription"> Row description </label><br />
-    <textarea name="cDescription"><?php echo $content_item['cDescription'];?></textarea><br /><br />
-
-    <label for="compare1"> Compare column 1 item</label><br />
-    <textarea name="compare1"><?php echo $content_item['compare1'];?></textarea><br /><br />
-
-    <label for="compare2"> Compare column 2 item</label><br />
-    <textarea name="compare2"><?php echo $content_item['compare2'];?></textarea><br /><br />
-
+    <div class="pageRow_style">  
+      <div class="pageColumn_style">
+        <label for="cDescription"> Row description </label><br />
+        <textarea name="cDescription"><?php echo $content_item['cDescription'];?></textarea><br /><br />
+      </div>
+      <div class="pageColumn_style">
+        <label for="compare1"> Compare column 1 item</label><br />
+        <textarea name="compare1"><?php echo $content_item['compare1'];?></textarea><br /><br />
+      </div>
+      <div class="pageColumn_style">
+        <label for="compare2"> Compare column 2 item</label><br />
+        <textarea name="compare2"><?php echo $content_item['compare2'];?></textarea><br /><br />
+      </div>
+    </div>
     <input type="submit" name="submit" value="Submit Edit" />
 
 </form>

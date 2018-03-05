@@ -144,6 +144,14 @@ img, object, embed, video {
 	margin-top: 50px;
 	font-size:12px;	
 }
+.pageRow_style{
+    display:flex;
+    flex-direction:row;
+  }
+  .pageColumn_style{
+    display:flex;
+    flex-direction: column;
+    margin-right:25px;
 
 
 }

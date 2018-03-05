@@ -1,3 +1,12 @@
+<?php 
+  if (!empty($currentpage)){
+    isset($currentpage);
+    $selected = 'page selected';
+  } else {
+    $currentpage = 'select a page';
+    $selected = 'select a page';
+  }
+?>
 <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
  <script>
   tinymce.init({
@@ -26,33 +35,40 @@
 });
   </script>
 <style >
-	form{margin-left:50px;}
+	form{margin-left:50px;
+      margin-bottom: 25px;
+  }
 </style>
-
 <h2><?php echo $title; ?></h2>
 
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('pagebuilder/createRow'); ?>
+<?php echo form_open('createRow'); ?>
 
     <!--Builds the compare rows -->
      <label for="pageID">Select Page Name</label><br /><br />
       <select name="pageID">
+        <option value='<?php echo $currentpage; ?>'><?php echo $selected; ?></option>
         <?php foreach ($page as $page_item): ?>
-            <option value='<?php echo $page_item["pageID"]; ?>'><?php echo $page_item['pageName']; ?></option>
+        <option value='<?php echo $page_item["pageID"]; ?>'><?php echo $page_item['pageName']; ?></option>
         <?php endforeach; ?>
       </select><br /><br />
-
-    <label for="cDescription"> Row description </label><br />
-    <textarea name="cDescription"></textarea><br /><br />
-
-    <label for="compare1"> Compare column 1 item</label><br />
-    <textarea name="compare1"></textarea><br /><br />
-
-    <label for="compare2"> Compare column 2 item</label><br />
-    <textarea name="compare2"></textarea><br /><br />
-
-    <input type="submit" name="submit" value="Add compare item" />
+    <div class="pageRow_style">  
+      <div class="pageColumn_style">
+        <label for="cDescription"> Row description </label><br />
+        <textarea name="cDescription"></textarea><br /><br />
+      </div>
+      <div class="pageColumn_style">
+        <label for="compare1"> Compare column 1 item</label><br />
+        <textarea name="compare1"></textarea><br /><br />
+      </div>
+      <div class="pageColumn_style">
+      <label for="compare2"> Compare column 2 item</label><br />
+      <textarea name="compare2"></textarea><br /><br />
+      </div>
+    </div>
+      <input type="submit" name="submit" value="Add compare item" />
+     
 
 </form>
 
