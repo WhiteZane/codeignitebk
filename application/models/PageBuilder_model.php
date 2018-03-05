@@ -7,9 +7,9 @@ class PageBuilder_model extends CI_Model {
         }
         public function get_page($slug = FALSE)
 		{
-        if ($slug === FALSE)
-        {
-                $query = $this->db->get('page');
+	        if ($slug === FALSE)
+	        {
+	            $query = $this->db->get('page');
                 return $query->result_array(); // checking table page
                 /*$query = $this->db->get('content');
                 return $query->result_array();*/ // checking table content
@@ -21,7 +21,7 @@ class PageBuilder_model extends CI_Model {
 				$query = $this->db->get(); // FROM clause
 				//return $query->row_array();
 				return $query->result_array();*/
-        		}
+        		} 
 
         		//$query = $this->db->get_where('page', array('slug' => $slug));
 
@@ -30,9 +30,11 @@ class PageBuilder_model extends CI_Model {
 				$query = $this->db->join ('content', 'content.pageID = page.pageID'); // CONDITION
 				 // FROM clause*/ $query = $this->db->get();
 				$query = $this->db->get_where('page', array('slug' => $slug));
-			    return $query->result_array();
-        		
-				}
+			    $query->result_array();
+			    
+			    
+        		 return $query->result_array();
+
 				/*public function get_content($pageID)
 				{
         		if ($pageID === FALSE)
@@ -49,6 +51,7 @@ class PageBuilder_model extends CI_Model {
 			    return $query->result_array();
         		
 				}*/
+			}
 				 public function get_editView_by_id($pageID = 0)
 				{
 				    if ($pageID === 0)
