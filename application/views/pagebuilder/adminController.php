@@ -1,9 +1,10 @@
 <?php
-$a = session_id();
-if(empty($a)) {
-    exit();
-    } 
-        
+if (isset($this->session->userdata['logged_in'])) {
+	$username = 'admin';
+	} else {
+	$newURL = 'http://rtcompare.com/';
+	header('Location: '.$newURL);
+}
 ?>
 <style >
 	body{margin-left:50px;}

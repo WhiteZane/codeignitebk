@@ -1,3 +1,11 @@
+<?php
+if (isset($this->session->userdata['logged_in'])) {
+  $username = 'admin';
+  } else {
+  $newURL = 'http://rtcompare.com/';
+  header('Location: '.$newURL);
+}
+?>
 <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
  <script>
   tinymce.init({

@@ -6,6 +6,7 @@ class PageBuilder extends CI_Controller {
                 parent::__construct();
                 $this->load->model('pageBuilder_model');
                 $this->load->helper('url_helper');
+                $this->load->library('session');
         }
 
         public function adminController()
@@ -50,12 +51,12 @@ class PageBuilder extends CI_Controller {
                            ini_set('session.use_strict_mode', 1);
                            session_set_cookie_params($life);
                            $sid = md5('LindseyJones');
-                            session_id($sid);
-
-                           session_start();
-
+                           $session_data = array();
+                           $this->session->set_userdata('logged_in', $session_data);
+                           // load admin controller
                            redirect(base_url() . 'adminController');
                         }else{
+                            $this->session->sess_destroy();
                             $this->load->view('pagebuilder/fail');
                         }
                         

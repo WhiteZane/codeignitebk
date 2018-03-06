@@ -1,6 +1,13 @@
+
 <?php
 //print_r($page_item);
 //print_r($page_content);
+if (isset($this->session->userdata['logged_in'])) {
+  $username = 'admin';
+  } else {
+  $newURL = 'http://rtcompare.com/';
+  header('Location: '.$newURL);
+}
 ?>
 
 <div class="gridContainer clearfix">

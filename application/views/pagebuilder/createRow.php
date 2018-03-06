@@ -1,4 +1,12 @@
 <?php 
+ //check for login
+  if (isset($this->session->userdata['logged_in'])) {
+  $username = 'admin';
+  } else {
+  $newURL = 'http://rtcompare.com/';
+  header('Location: '.$newURL);
+}
+  // test for page selection
   if (!empty($currentpage)){
     isset($currentpage);
     $selected = 'page selected';
