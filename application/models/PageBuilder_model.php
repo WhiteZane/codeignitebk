@@ -30,11 +30,15 @@ class PageBuilder_model extends CI_Model {
 				$query = $this->db->join ('content', 'content.pageID = page.pageID'); // CONDITION
 				 // FROM clause*/ $query = $this->db->get();
 				$query = $this->db->get_where('page', array('slug' => $slug));
+			    
 			    $query->result_array();
 			    
-			    
-        		 return $query->result_array();
+			    if ($query === FALSE){
 
+        		 	$query = $this->db->get_where('page', array('slug' => $slug));
+        		 	return $query->row_array();
+			    }
+			    return $query->result_array();
 				/*public function get_content($pageID)
 				{
         		if ($pageID === FALSE)
@@ -106,6 +110,8 @@ class PageBuilder_model extends CI_Model {
 			        'pTableCompare2' => $this->input->post('pTableCompare2'),
 			        'pageFooter' => $this->input->post('pageFooter')
 		    	);
+		    		//set default content
+			    
 			    	if ($pageID == 0) {
             			return $this->db->insert('page', $data);
         			} else {
@@ -135,6 +141,34 @@ class PageBuilder_model extends CI_Model {
 	            			return $this->db->update('content', $data);
 	        			}
 			    		//return $this->db->insert('content', $data);
+				}
+				public function get_last_page()
+				{     
+					$this->db->select_max('pageID');
+     				$result= $this->db->get('page')->row_array();
+     				echo $result['pageID'];    					
+   					 return $result;
+				}
+				public function default_content($pageID = 0)
+				{
+					$cDescription = 'Use edit view to edit content';
+					$compare1 = 'column1 test';
+					$compare2 = 'column2 test';
+					$pageID = implode(" ", $pageID);
+					echo $pageID;
+
+					//print_r($pageID);
+					$data = array(
+				        'cDescription' => $cDescription,
+				        'compare1' => $compare1,
+				        'compare2' => $compare2,
+				        'pageID' => $pageID
+			    	);
+			    	if ($pageID == FALSE) {
+	            			echo "error";
+	        			} else {
+	            			return $this->db->insert('content', $data);
+	        			}
 				}
 
 }

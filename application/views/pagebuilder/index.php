@@ -1,9 +1,17 @@
-<style>form{margin-left:25px;}.red{color:red;}</style>
-<h2><?php echo $title; ?></h2>
+<style>form{
+width:300px;
+border:1px solid grey;
+padding:2%;
+margin:0 auto;
+margin-top: 300px;}
+.red{color:red;}</style>
+
 
 <?php echo '<div class="red">'. validation_errors() .'</div>'; ?>
 
 <?php echo form_open(' '); ?>
+	
+	<h2><?php echo $title; ?></h2>
 
     <label for="user">username</label><br />
     <input type="input" name="username" /><br />

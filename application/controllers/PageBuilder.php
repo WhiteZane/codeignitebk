@@ -106,6 +106,8 @@ class PageBuilder extends CI_Controller {
             else
             {
                 $this->pageBuilder_model->set_page();
+                $pageID = $this->pageBuilder_model->get_last_page();
+                $this->pageBuilder_model->default_content($pageID);
                 redirect( base_url() . 'adminController');
             }
         }

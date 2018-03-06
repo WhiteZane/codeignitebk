@@ -1,3 +1,10 @@
+<?php
+$a = session_id();
+if(empty($a)) {
+    exit();
+    } 
+        
+?>
 <style >
 	body{margin-left:50px;}
 </style>
