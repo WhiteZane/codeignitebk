@@ -44,7 +44,7 @@ class PageBuilder extends CI_Controller {
                         $username_md5 = md5($username);
                         $password_md5 = md5($password);
                         $user = md5('admin');
-                        $pass = md5('Mededhse1');
+                        $pass = md5('admin');
                         if ($username_md5 == $user && $password_md5 == $pass){
                            $life=600;
                            
