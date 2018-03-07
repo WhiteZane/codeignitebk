@@ -19,10 +19,11 @@ class PageBuilder extends CI_Controller {
                 $this->load->view('templates/footer');
         }
         public function index()
-        {
+        {           
+                    $auth = $this->pageBuilder_model->get_auth();
+                    
                     $this->load->helper('form');
                     $this->load->library('form_validation');
-
                     $data['title'] = 'Login Here:';
 
                     $this->form_validation->set_rules('username', 'User Name', 'required');
@@ -41,11 +42,11 @@ class PageBuilder extends CI_Controller {
                         $username = $_POST['username'];
                         $password = $_POST['password'];
                         //convert to md5
-                        $username_md5 = md5($username);
-                        $password_md5 = md5($password);
-                        $user = md5('admin');
-                        $pass = md5('admin');
-                        if ($username_md5 == $user && $password_md5 == $pass){
+                        $username_sha1 = sha1($username);
+                        $password_sha1 = sha1($password);
+                        $user = $auth['user'];
+                        $pass = $auth['password'];
+                        if ($username_sha1 == $user && $password_sha1 == $pass){
                            $life=600;
                            
                            ini_set('session.use_strict_mode', 1);
@@ -237,6 +238,45 @@ class PageBuilder extends CI_Controller {
                 }
         }
 
+        public function deleteContent()
+        {
+                $contentID = $this->uri->segment(2);
+                print_r($contentID);
+                $pageID = $this->uri->segment(3);
+                print_r($pageID);               
+                
+                if (empty($contentID))
+                {
+                    show_404();
+                }
 
+                /*$content_item = $this->pageBuilder_model->get_content_by_id($contentID);*/
+                /*$pageID = $this->input->post('pageID');*/
+                
+                //deleting content 
+                    $this->pageBuilder_model->delete_content($contentID);
+                //reloading the page
+                    redirect( base_url() . 'editView/' . $pageID);
+                
+        }
+
+        public function deletePage()
+        {
+                $pageID = $this->uri->segment(2);
+               
+                
+                if (empty($pageID))
+                {
+                    show_404();
+                }
+                
+                //deleting content
+
+                    $this->pageBuilder_model->delete_page($pageID);
+
+                //reloading the page
+                    redirect(base_url() . 'adminController');
+                
+        }
                     
 }

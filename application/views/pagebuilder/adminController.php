@@ -4,6 +4,7 @@ if (isset($this->session->userdata['logged_in'])) {
 	} else {
 	$newURL = 'http://rtcompare.com/';
 	header('Location: '.$newURL);
+        
 }
 ?>
 <style >
@@ -19,5 +20,8 @@ if (isset($this->session->userdata['logged_in'])) {
         </div>
         <p><a href="<?php echo site_url("{$page_item['slug']}"); ?>"><button>View page</button></a>
         <a class="button" href="<?php echo site_url('editView/'.$page_item['pageID']); ?>"><button>Edit</button></a></p> 
+        <a onClick="return confirm('Are you sure you want to delete?')" class="button" 
+                                        href="<?php echo site_url('deletePage/'.$page_item['pageID']); ?>" 
+                                        ><button>Delete</button></a>
 <?php endforeach; //{$page_item['pageID']}?>
 <br /> <br />

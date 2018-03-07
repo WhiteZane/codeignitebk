@@ -7,6 +7,7 @@ if (isset($this->session->userdata['logged_in'])) {
   } else {
   $newURL = 'http://rtcompare.com/';
   header('Location: '.$newURL);
+ 
 }
 ?>
 
@@ -15,6 +16,7 @@ if (isset($this->session->userdata['logged_in'])) {
 	<div class="contact"><a href="http://www.lindsey-jones.com">Home</a> | <a href="http://www.lindsey-jones.com/Selfstudy.html">LindseyJones Product Catalog</a></div>
 	<br /><a class="button" href="<?php echo site_url('index.php'); ?>"><button>Pages Archive</button></a><br />
 	<br /><a class="button" href="<?php echo site_url('editPage/'.$page_item[0]['pageID']); ?>"><button>Edit Page</button></a><br />
+	
 	
 	<div class="title"><?php echo $page_item[0]['pageHeaderTitle']; ?>	
 	</div>
@@ -34,6 +36,9 @@ if (isset($this->session->userdata['logged_in'])) {
 	                	<td><?php echo $content['compare1']; ?></td>
 	                	<td><?php echo $content['compare2']; ?></td>
 	                	<td><a class="button" href="<?php echo site_url('editContent/'.$content['contentID']); ?>"><button>Edit</button></a></td>
+	                	<td><a onClick="return confirm('Are you sure you want to delete?')" class="button" 
+	                		href="<?php echo site_url('deleteContent/'.$content['contentID'].'/'. $content['pageID']); ?>" 
+	                		><button>Delete</button></a></td>
 	          	</tr> 
 
 			 <?php endforeach;} ?> 

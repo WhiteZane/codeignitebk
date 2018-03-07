@@ -5,6 +5,12 @@ class PageBuilder_model extends CI_Model {
         {
                 $this->load->database();
         }
+        public function get_auth()
+        {
+        	$authID = 1 ;
+        	$query = $this->db->get_where('auth', array('id' => $authID));
+        	return $query->row_array();
+        }
         public function get_page($slug = FALSE)
 		{
 	        if ($slug === FALSE)
@@ -33,7 +39,7 @@ class PageBuilder_model extends CI_Model {
 			    
 			    $query->result_array();
 			    
-			    if ($query === FALSE){
+			    if ($query->num_rows() <= 0) {
 
         		 	$query = $this->db->get_where('page', array('slug' => $slug));
         		 	return $query->row_array();
@@ -170,6 +176,16 @@ class PageBuilder_model extends CI_Model {
 	            			return $this->db->insert('content', $data);
 	        			}
 				}
+				public function delete_content($contentID)
+    			{
+        			$this->db->where('contentID', $contentID);
+        			return $this->db->delete('content');
+    			}
+    			public function delete_page($pageID)
+    			{	
+        			$this->db->where('pageID', $pageID);
+        			return $this->db->delete( array('content','page'));
+    			}
 
 }
 
