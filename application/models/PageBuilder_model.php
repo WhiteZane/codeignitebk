@@ -17,50 +17,29 @@ class PageBuilder_model extends CI_Model {
 	        {
 	            $query = $this->db->get('page');
                 return $query->result_array(); // checking table page
-                /*$query = $this->db->get('content');
-                return $query->result_array();*/ // checking table content
-               /* $this->db->select('page.pageID, page.pageName, page.slug, page.pageHeaderTitle, page.pRowDescription, page.pTableCompare1, 
-				page.pTableCompare2, page.pageFooter, content.contentID,  content.cDescription,  content.compare1, 
-				content.compare2'); // SELECT columns
-				$this->db->from('page','content'); // select table
-				$this->db->join ('content', 'page.pageID = content.pageID'); // CONDITION
-				$query = $this->db->get(); // FROM clause
-				//return $query->row_array();
-				return $query->result_array();*/
+                
         		} 
 
-        		//$query = $this->db->get_where('page', array('slug' => $slug));
+        		
 
         		$query = $this->db->select('*'); // SELECT columns
-				//$query = $this->db->from('page'); // select table
 				$query = $this->db->join ('content', 'content.pageID = page.pageID'); // CONDITION
-				 // FROM clause*/ $query = $this->db->get();
 				$query = $this->db->get_where('page', array('slug' => $slug));
 			    
-			    $query->result_array();
+			    $result = $query->result_array();
 			    
-			    if ($query->num_rows() <= 0) {
-
-        		 	$query = $this->db->get_where('page', array('slug' => $slug));
-        		 	return $query->row_array();
+			    //if result array gets a result
+			    if ($result) {
+			    	$query->result_array();
+        		 	return $query->result_array();
+			    } else {
+			    	$query1 = $this->db->get_where('page', array('slug' => $slug));
+        		 	return $query1->result_array();
 			    }
-			    return $query->result_array();
-				/*public function get_content($pageID)
-				{
-        		if ($pageID === FALSE)
-        		{
-	                $query = $this->db->get('content');
-	                return $query->result_array(); 
-        		}
 
-        		$query = $this->db->select('contentID,  cDescription,  compare1, 
-				compare2');
-        		//$this->db->from('content'); // select table
-        		$query = $this->db->get_where('content', array('pageID' => $pageID ));
 			    
-			    return $query->result_array();
-        		
-				}*/
+
+				
 			}
 				 public function get_editView_by_id($pageID = 0)
 				{
@@ -75,7 +54,17 @@ class PageBuilder_model extends CI_Model {
 				$query = $this->db->join ('content', 'content.pageID = page.pageID'); // CONDITION
 				 // FROM clause*/ $query = $this->db->get();
 				$query = $this->db->get_where('page', array('page.pageID' => $pageID));
-			    return $query->result_array();
+			    $result = $query->result_array();
+			    
+			    //if result array gets a result
+			    if ($result) {
+			    	$query->result_array();
+        		 	return $query->result_array();
+			    } else {
+			    	$query1 = $this->db->get_where('page', array('page.pageID' => $pageID));
+        		 	return $query1->result_array();
+			    }
+
 				}
 
 				public function get_page_by_id($pageID = 0)

@@ -2,6 +2,7 @@
 <?php
 //print_r($page_item);
 //print_r($page_content);
+
 ?>
 
 <div class="gridContainer clearfix">
@@ -21,9 +22,9 @@
      			foreach ($page_item as $content ):  ?>
 
 	    		<tr>
-	        		<td><?php echo $content['cDescription']; ?></td>
-	                	<td><?php echo $content['compare1']; ?></td>
-	                	<td><?php echo $content['compare2']; ?></td>
+	        		<td><?php echo (isset($content['cDescription'])) ? $content['cDescription'] : " "; ?></td>
+	                	<td><?php echo (isset($content['compare1']))? $content['compare1'] : " "; ?></td>
+	                	<td><?php echo (isset($content['compare2']))? $content['compare2'] : " "; ?></td>
 	          	</tr> 
 
 			 <?php endforeach;} ?> 

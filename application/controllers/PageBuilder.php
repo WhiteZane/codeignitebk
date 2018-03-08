@@ -71,7 +71,6 @@ class PageBuilder extends CI_Controller {
         error_log($slug);        
         error_log($pageID);        
         $data['page_item'] = $this->pageBuilder_model->get_page($slug);
-        /*$data['page_content'] = $this->pageBuilder_model->get_content($pageID);*/
         
         if (empty($data['page_item']))
         {
