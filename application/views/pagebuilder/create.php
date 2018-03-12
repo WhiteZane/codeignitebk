@@ -6,33 +6,9 @@ if (isset($this->session->userdata['logged_in'])) {
   header('Location: '.$newURL);
 }
 ?>
-<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
- <script>
-  tinymce.init({
-  selector: 'textarea',
-  height: 400,
-  width: 500,
-  plugins: 'codesample code',
-  codesample_dialog_width: '400',
-  codesample_dialog_height: '400',
-  codesample_languages: [
-        {text: 'HTML/XML', value: 'markup'},
-        {text: 'JavaScript', value: 'javascript'},
-        {text: 'CSS', value: 'css'},
-        {text: 'PHP', value: 'php'},
-        {text: 'Ruby', value: 'ruby'},
-        {text: 'Python', value: 'python'},
-        {text: 'Java', value: 'java'},
-        {text: 'C', value: 'c'},
-        {text: 'C#', value: 'csharp'},
-        {text: 'C++', value: 'cpp'}
-    ],
-  toolbar: 'codesample code undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent code',
-  content_css: [
-    '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-    '//www.tinymce.com/css/codepen.min.css']
-});
-  </script>
+<script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tinymce/tinymce.min.js"></script>
+<script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tiny.js"></script>
+<script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/jscolor.js"></script>  
 <style >
 	form{margin-left:50px;
       margin-bottom: 25px;
@@ -65,9 +41,59 @@ if (isset($this->session->userdata['logged_in'])) {
         <textarea name="pTableCompare2" /></textarea><br /><br />
       </div>
     </div>
-     <label for="pageFooter"> Page Footer</label><br />
-    <textarea name="pageFooter"></textarea><br /><br />
-    
+    <div class="pageRow_style">
+      <div class="pageColumn_style">
+        <label for="pageFooter"> Page Footer</label><br />
+        <textarea name="pageFooter"></textarea><br /><br />
+      </div>
+        <div class="pageColumn_style">
+          <p>
+            Header:
+            <input name="color" type="hidden" id="color_value" onchange="update(this.color_value)" value="FAFCFD">
+            <button class="jscolor {valueElement:'color_value', styleElement:'styleRow'}" >Pick a color</button></p>
+           <p>
+            First Row:
+            <input name="color2" type="hidden" id="color_value" onchange="update(this.color_value)" value="FAFCFD">
+            <button class="jscolor {valueElement:'color_value', styleElement:'styleRow'}" >Pick a color</button></p>
+            <p>Second Row:
+            <input name="color3" type="hidden" id="color_value2" onchange="update2(this.color_value2)" value="E7F5F8">
+            <button class="jscolor {valueElement:'color_value2', styleElement:'styleRow2'}">Pick a color</button>
+          </p>
+          <br /><br />
+
+          <table style="border:2px solid black; width:300px;">
+            <tr>
+              <th>Column 0</th>
+              <th>Column 1</th>
+              <th>Column 2</th>
+            </tr>
+            
+            <tr class="styleRow">
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+            </tr>
+            <tr class="styleRow2">
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+            </tr>
+            <tr class="styleRow">
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+            </tr>
+            <tr class="styleRow2">
+              <td>Test</td>
+              <td>Test</td>
+              <td>Test</td>
+            </tr>
+
+          </table>
+
+        </div>
+      </div>
     <input type="submit" name="submit" value="Build compare page" />
 
 </form>
+

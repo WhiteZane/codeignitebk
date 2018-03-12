@@ -6,35 +6,10 @@ if (isset($this->session->userdata['logged_in'])) {
   header('Location: '.$newURL);
 }
 ?>
-<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
- <script>
-  tinymce.init({
-  selector: 'textarea',
-  height: 200,
-  width: 500,
-  plugins: 'codesample code',
-  codesample_dialog_width: '400',
-  codesample_dialog_height: '400',
-  codesample_languages: [
-        {text: 'HTML/XML', value: 'markup'},
-        {text: 'JavaScript', value: 'javascript'},
-        {text: 'CSS', value: 'css'},
-        {text: 'PHP', value: 'php'},
-        {text: 'Ruby', value: 'ruby'},
-        {text: 'Python', value: 'python'},
-        {text: 'Java', value: 'java'},
-        {text: 'C', value: 'c'},
-        {text: 'C#', value: 'csharp'},
-        {text: 'C++', value: 'cpp'}
-    ],
-  toolbar: 'codesample code undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent code',
-  content_css: [
-    '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-    '//www.tinymce.com/css/codepen.min.css']
-});
-  </script>
+<script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tinymce/tinymce.min.js"></script> 
+<script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tiny.js"></script> 
 <style >
-    form{margin-left:50px;
+    form{margin-left:25px;
         margin-bottom: 25px;
     }
 </style>

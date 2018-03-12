@@ -13,7 +13,6 @@ if (isset($this->session->userdata['logged_in'])) {
 
 <div class="gridContainer clearfix">
 	<div class="hero" ><img src = "<?php echo site_url(); ?>Images/Logosmall.png" alt="LindseyJones"></div>
-	<div class="contact"><a href="http://www.lindsey-jones.com">Home</a> | <a href="http://www.lindsey-jones.com/Selfstudy.html">LindseyJones Product Catalog</a></div>
 	<br /><a class="button" href="<?php echo site_url('adminController'); ?>"><button>Pages Archive</button></a><br />
 	<br /><a class="button" href="<?php echo site_url('editPage/'.$page_item[0]['pageID']); ?>"><button>Edit Page</button></a><br />
 	
