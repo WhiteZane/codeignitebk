@@ -82,7 +82,7 @@ if (isset($this->session->userdata['logged_in'])) {
 			 <?php endforeach;} ?> 
 
 		</table>
-		<a class="button" href="<?php echo site_url('createRow/' .$page_item[0]['pageID']) ?>"><button>Add Rows</button></a>
+		<a class="button" href="<?php echo site_url('createRow/' .$page_item[0]['pageID']) ?>"><button>+ Add Row</button></a>
 	</div>
 
 </div>

@@ -65,8 +65,9 @@ if (isset($this->session->userdata['logged_in'])) {
               <td>preview</td>
               <td>colors</td>
             </tr>
-
+            <p> (Only sets row color.) </p>
           </table>
+
           <p>
             Header:
             <input name="headColor" type="hidden" id="color_value" value="F5F5F5">
@@ -78,6 +79,8 @@ if (isset($this->session->userdata['logged_in'])) {
             <p>Second Row:
             <input name="rowColor2" type="hidden" id="color_value2" value="E7F5F8">
             <button class="jscolor {valueElement:'color_value2', styleElement:'styleRow2'}">Pick a color</button>
+            
+
           </p>
           <br /><br />
 

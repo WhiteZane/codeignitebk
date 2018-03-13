@@ -12,7 +12,7 @@ class PageBuilder extends CI_Controller {
         public function adminController()
         {
                 $data['page'] = $this->pageBuilder_model->get_page();
-                $data['title'] = 'Page Archive';
+                $data['title'] = 'Compare Page Builder';
 
                 $this->load->view('templates/header', $data);
                 $this->load->view('pagebuilder/adminController', $data);
