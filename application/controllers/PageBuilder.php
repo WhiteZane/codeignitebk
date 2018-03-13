@@ -96,6 +96,9 @@ class PageBuilder extends CI_Controller {
             $this->form_validation->set_rules('pTableCompare1', 'Title column 1', 'required');
             $this->form_validation->set_rules('pTableCompare2', 'Title column 2', 'required');
             $this->form_validation->set_rules('pageFooter', 'Page Footer', 'required');
+            $this->form_validation->set_rules('headColor', 'Header Color', 'required');
+            $this->form_validation->set_rules('rowColor', 'Row 1 Color', 'required');
+            $this->form_validation->set_rules('rowColor2', 'Row 2 Color', 'required');
 
             if ($this->form_validation->run() === FALSE)
             {
@@ -186,7 +189,10 @@ class PageBuilder extends CI_Controller {
                 $this->form_validation->set_rules('pRowDescription', 'Title column 0', 'trim|alpha_numeric|max_length[30]');
                 $this->form_validation->set_rules('pTableCompare1', 'Title column 1', 'required');
                 $this->form_validation->set_rules('pTableCompare2', 'Title column 2', 'required');
-                $this->form_validation->set_rules('pageFooter', 'Page Footer', 'required');       
+                $this->form_validation->set_rules('pageFooter', 'Page Footer', 'required');
+                $this->form_validation->set_rules('headColor', 'Header Color', 'required');
+                $this->form_validation->set_rules('rowColor', 'Row 1 Color', 'required');
+                $this->form_validation->set_rules('rowColor2', 'Row 2 Color', 'required');       
          
                 if ($this->form_validation->run() === FALSE)
                 {

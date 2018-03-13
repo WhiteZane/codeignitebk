@@ -10,7 +10,17 @@ if (isset($this->session->userdata['logged_in'])) {
  
 }
 ?>
-
+<style>
+	.comparetable tr:nth-child(2n+3){
+		background-color:#<?php echo (isset($page_item[0]['rowColor2'])) ? $page_item[0]['rowColor2'] : ""; ?>;	
+	}
+	.comparetable tr:nth-child(2n){
+		background-color:#<?php echo (isset($page_item[0]['rowColor'])) ? $page_item[0]['rowColor'] : ""; ?>;
+	}
+	.comparetable tr:nth-child(1) td{
+		background-color:#<?php echo (isset($page_item[0]['headColor'])) ? $page_item[0]['headColor'] : ""; ?>;
+	}
+</style>
 <div class="gridContainer clearfix">
 	<div class="hero" ><img src = "<?php echo site_url(); ?>Images/Logosmall.png" alt="LindseyJones"></div>
 	<br /><a class="button" href="<?php echo site_url('adminController'); ?>"><button>Pages Archive</button></a><br />
@@ -25,6 +35,8 @@ if (isset($this->session->userdata['logged_in'])) {
 	      	<td>&nbsp;<?php echo $page_item[0]['pRowDescription'];?></td>
 	      	<td><?php echo $page_item[0]['pTableCompare1'];?></td>
 	      	<td><?php echo $page_item[0]['pTableCompare2'];?></td>
+	      	<td></td>
+	      	<td></td>
 	    	</tr>
 
 			<?php if(isset($page_item)) {

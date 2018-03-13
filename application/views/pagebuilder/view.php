@@ -2,9 +2,18 @@
 <?php
 //print_r($page_item);
 //print_r($page_content);
-
 ?>
-
+<style>
+	.comparetable tr:nth-child(2n+3){
+		background-color:#<?php echo (isset($page_item[0]['rowColor2'])) ? $page_item[0]['rowColor2'] : ""; ?>;	
+	}
+	.comparetable tr:nth-child(2n){
+		background-color:#<?php echo (isset($page_item[0]['rowColor'])) ? $page_item[0]['rowColor'] : ""; ?>;
+	}
+	.comparetable tr:nth-child(1){
+		background-color:#<?php echo (isset($page_item[0]['headColor'])) ? $page_item[0]['headColor'] : ""; ?>;
+	}
+</style>
 <div class="gridContainer clearfix">
 	<div class="hero" ><img src = "<?php echo site_url(); ?>Images/Logosmall.png" alt="LindseyJones"></div>
 	<div class="title"><?php echo $page_item[0]['pageHeaderTitle']; ?>

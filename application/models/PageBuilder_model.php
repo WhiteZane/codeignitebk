@@ -103,7 +103,10 @@ class PageBuilder_model extends CI_Model {
 			        'pRowDescription' => $this->input->post('pRowDescription'),
 			        'pTableCompare1' => $this->input->post('pTableCompare1'),
 			        'pTableCompare2' => $this->input->post('pTableCompare2'),
-			        'pageFooter' => $this->input->post('pageFooter')
+			        'pageFooter' => $this->input->post('pageFooter'),
+			        'headColor' => $this->input->post('headColor'),
+			        'rowColor' => $this->input->post('rowColor'),
+			        'rowColor2' => $this->input->post('rowColor2')
 		    	);
 		    		//set default content
 			    

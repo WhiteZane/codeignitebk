@@ -3,11 +3,12 @@
   $username = 'admin';
   } else {
   $newURL = 'http://rtcompare.com/';
-  header('Location: '.$newURL);
-}
+  header('Location: '.$newURL);          
+ }
 ?>
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tinymce/tinymce.min.js"></script> 
-<script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tiny.js"></script> 
+<script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tiny.js"></script>
+<script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/jscolor.js"></script>   
 <style >
     form{margin-left:50px;
         margin-bottom: 25px;
@@ -18,7 +19,21 @@
 
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('editPage/'.$page_item['pageID']); ?>
+<?php echo form_open('editPage/'.$page_item['pageID']); 
+  print_r($page_item);
+  //set colors
+  $page_item['headColor'] = (isset($page_item['headColor'])) ? $page_item['headColor'] : 'F5F5F5';
+  $page_item['rowColor'] = (isset($page_item['rowColor'])) ? $page_item['rowColor'] : 'FAFCFD';
+  $page_item['rowColor2'] = (isset($page_item['rowColor2'])) ? $page_item['rowColor2'] : 'E7F5F8';
+  $getHeadColor = $page_item['headColor'];
+  $getRowColor = $page_item['rowColor']; 
+  $getRowColor2 = $page_item['rowColor2']; 
+
+ /* print_r($getHeadColor);
+  print_r($getRowColor);
+  print_r($getRowColor2);*/
+
+?>
     
     <!--Builds the outside of the page -->
     <label for="pageName">Page Name (url)</label><br />
@@ -42,8 +57,51 @@
         <textarea name="pTableCompare2"/><?php echo $page_item['pTableCompare2'];?></textarea><br /><br />
       </div>
       </div>
-     <label for="pageFooter"> Page Footer</label><br />
-    <textarea name="pageFooter"><?php echo $page_item['pageFooter'];?></textarea><br /><br />
+        <div class="pageRow_style">
+      <div class="pageColumn_style">
+        <h2> Page Footer<h2><br />
+        <textarea name="pageFooter"><?php echo $page_item['pageFooter'];?></textarea><br /><br />
+      </div>
+      <!-- start color picker -->
+        <div class="pageColumn_style">
+          <table style="border:2px solid black; width:580px; margin-top: 40px; margin-bottom: 40px;">
+            <h2>Pick table colors</h2>
+            <tr id="styleHead">
+              <th>Header</th>
+              <th>preview</th>
+              <th>colors</th>
+            </tr>
+            
+            <tr id="styleRow">
+              <td>Row 1</td>
+              <td>preview</td>
+              <td>colors</td>
+            </tr>
+            <tr id="styleRow2">
+              <td>Row 2</td>
+              <td>preview</td>
+              <td>colors</td>
+            </tr>
+
+          </table>
+          <p>
+            Header:
+            <input name="headColor" type="hidden" id="color_value" value="<?php echo  $getHeadColor; ?>" >
+            <button class="jscolor {valueElement:'color_value', styleElement:'styleHead'}" >Pick a color</button></p>
+           <p>
+            First Row:
+            <input name="rowColor" type="hidden" id="color_value1" value="<?php echo $getRowColor; ?>" >
+            <button class="jscolor {valueElement:'color_value1', styleElement:'styleRow'}" >Pick a color</button></p>
+            <p>Second Row:
+            <input name="rowColor2" type="hidden" id="color_value2" value="<?php echo $getRowColor2; ?>">
+            <button class="jscolor {valueElement:'color_value2', styleElement:'styleRow2'}">Pick a color</button>
+          </p>
+          <br /><br />
+
+          
+
+        </div>
+      </div>
     
     <input type="submit" name="submit" value="Edit compare page" />
 

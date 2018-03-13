@@ -15,81 +15,73 @@ if (isset($this->session->userdata['logged_in'])) {
   }
   
 </style>
-<h2><?php echo $title; ?></h2>
+<h1><?php echo $title; ?></h1>
 
 <?php echo validation_errors(); ?>
 
 <?php echo form_open('create'); ?>
 	
 	<!--Builds the outside of the page -->
-    <label for="pageName">Page Name (url)</label><br />
+    <h2>Page Name (url)</h2><br />
     <input type="input" name="pageName" /><br /><br />
 
-    <label for="pageHeaderTitle"> Page Header</label><br />
+    <h2> Page Header</h2><br />
     <textarea name="pageHeaderTitle"></textarea><br /><br />
     <div class="pageRow_style">
       <div class="pageColumn_style">
-        <label for="pRowDescription">Title column 0 (default is null)</label><br />
+        <h2>Title column 0 (default is null)</h2><br />
         <textarea type="input" name="pRowDescription" ></textarea><br /><br />
       </div>
       <div class="pageColumn_style">
-        <label for="pTableCompare1">Title column 1</label><br />
+        <h2>Title column 1</h2><br />
         <textarea name="pTableCompare1" ></textarea><br /><br />
       </div>
       <div class="pageColumn_style">
-        <label for="pTableCompare2">Title column 2</label><br />
+        <h2>Title column 2</h2><br />
         <textarea name="pTableCompare2" /></textarea><br /><br />
       </div>
     </div>
     <div class="pageRow_style">
       <div class="pageColumn_style">
-        <label for="pageFooter"> Page Footer</label><br />
+        <h2> Page Footer<h2><br />
         <textarea name="pageFooter"></textarea><br /><br />
       </div>
         <div class="pageColumn_style">
+          <table style="border:2px solid black; width:580px; margin-top: 40px; margin-bottom: 40px;">
+            <h2>Pick table colors</h2>
+            <tr id="styleHead">
+              <th>Header</th>
+              <th>preview</th>
+              <th>colors</th>
+            </tr>
+            
+            <tr id="styleRow">
+              <td>Row 1</td>
+              <td>preview</td>
+              <td>colors</td>
+            </tr>
+            <tr id="styleRow2">
+              <td>Row 2</td>
+              <td>preview</td>
+              <td>colors</td>
+            </tr>
+
+          </table>
           <p>
             Header:
-            <input name="color" type="hidden" id="color_value" onchange="update(this.color_value)" value="FAFCFD">
-            <button class="jscolor {valueElement:'color_value', styleElement:'styleRow'}" >Pick a color</button></p>
+            <input name="headColor" type="hidden" id="color_value" value="F5F5F5">
+            <button class="jscolor {valueElement:'color_value', styleElement:'styleHead'}" >Pick a color</button></p>
            <p>
             First Row:
-            <input name="color2" type="hidden" id="color_value" onchange="update(this.color_value)" value="FAFCFD">
-            <button class="jscolor {valueElement:'color_value', styleElement:'styleRow'}" >Pick a color</button></p>
+            <input name="rowColor" type="hidden" id="color_value1" value="FAFCFD">
+            <button class="jscolor {valueElement:'color_value1', styleElement:'styleRow'}" >Pick a color</button></p>
             <p>Second Row:
-            <input name="color3" type="hidden" id="color_value2" onchange="update2(this.color_value2)" value="E7F5F8">
+            <input name="rowColor2" type="hidden" id="color_value2" value="E7F5F8">
             <button class="jscolor {valueElement:'color_value2', styleElement:'styleRow2'}">Pick a color</button>
           </p>
           <br /><br />
 
-          <table style="border:2px solid black; width:300px;">
-            <tr>
-              <th>Column 0</th>
-              <th>Column 1</th>
-              <th>Column 2</th>
-            </tr>
-            
-            <tr class="styleRow">
-              <td>Test</td>
-              <td>Test</td>
-              <td>Test</td>
-            </tr>
-            <tr class="styleRow2">
-              <td>Test</td>
-              <td>Test</td>
-              <td>Test</td>
-            </tr>
-            <tr class="styleRow">
-              <td>Test</td>
-              <td>Test</td>
-              <td>Test</td>
-            </tr>
-            <tr class="styleRow2">
-              <td>Test</td>
-              <td>Test</td>
-              <td>Test</td>
-            </tr>
-
-          </table>
+          
 
         </div>
       </div>
