@@ -13,8 +13,14 @@ if (isset($this->session->userdata['logged_in'])) {
 	form{margin-left:50px;
       margin-bottom: 25px;
   }
+  h1 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+  }
   
 </style>
+
 <h1><?php echo $title; ?></h1>
 
 <?php echo validation_errors(); ?>
@@ -47,7 +53,7 @@ if (isset($this->session->userdata['logged_in'])) {
         <textarea name="pageFooter"></textarea><br /><br />
       </div>
         <div class="pageColumn_style">
-          <table style="border:2px solid black; width:580px; margin-top: 40px; margin-bottom: 40px;">
+          <table style="border:1px solid grey; width:580px; margin-top: 40px; margin-bottom: 40px;">
             <h2>Pick table colors</h2>
             <tr id="styleHead">
               <th>Header</th>
@@ -88,7 +94,7 @@ if (isset($this->session->userdata['logged_in'])) {
 
         </div>
       </div>
-    <input type="submit" name="submit" value="Build compare page" />
+    <input class="custom_button btn" style="margin-bottom: 25px;" type="submit" name="submit" value="Build compare page" />
 
 </form>
 

@@ -13,14 +13,19 @@
     form{margin-left:50px;
         margin-bottom: 25px;
     }
+    h1 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+  }
 
 </style>
-<h2><?php echo $title; ?></h2>
+<h1><?php echo $title; ?></h1>
 
 <?php echo validation_errors(); ?>
 
 <?php echo form_open('editPage/'.$page_item['pageID']); 
-  print_r($page_item);
+  //print_r($page_item);
   //set colors
   $page_item['headColor'] = (isset($page_item['headColor'])) ? $page_item['headColor'] : 'F5F5F5';
   $page_item['rowColor'] = (isset($page_item['rowColor'])) ? $page_item['rowColor'] : 'FAFCFD';
@@ -36,24 +41,24 @@
 ?>
     
     <!--Builds the outside of the page -->
-    <label for="pageName">Page Name (url)</label><br />
+    <h2>Page Name (url)</h2><br />
     <input type="input" name="pageName" value="<?php echo $page_item['pageName'];?>" /><br /><br />
 
-    <label for="pageHeaderTitle"> Page Header</label><br />
+    <h2> Page Header</h2><br />
     <textarea name="pageHeaderTitle"><?php echo $page_item['pageHeaderTitle'];?></textarea><br /><br />
 
     <div class="pageRow_style">
       <div class="pageColumn_style">
-        <label for="pRowDescription">Title Description column 0<br />(default is null)</label><br />
+        <h2>Title Description column 0<br />(normally empty)</h2><br />
         <textarea type="input" name="pRowDescription"><?php echo $page_item['pRowDescription'];?></textarea><br /><br />
       </div>
 
       <div class="pageColumn_style">
-        <label for="pTableCompare1">Compare Title column 1</label><br />
+        <h2>Compare Title column 1</h2><br />
         <textarea name="pTableCompare1" ><?php echo $page_item['pTableCompare1'];?></textarea><br /><br />
       </div>
       <div class="pageColumn_style">
-        <label for="pTableCompare2">Compare Title column 2</label><br />
+        <h2>Compare Title column 2</h2><br />
         <textarea name="pTableCompare2"/><?php echo $page_item['pTableCompare2'];?></textarea><br /><br />
       </div>
       </div>
@@ -64,7 +69,7 @@
       </div>
       <!-- start color picker -->
         <div class="pageColumn_style">
-          <table style="border:2px solid black; width:580px; margin-top: 40px; margin-bottom: 40px;">
+          <table style="border:1px solid grey; width:580px; margin-top: 40px; margin-bottom: 40px;">
             <h2>Pick table colors</h2>
             <tr id="styleHead">
               <th>Header</th>
@@ -103,6 +108,6 @@
         </div>
       </div>
     
-    <input type="submit" name="submit" value="Edit compare page" />
+    <input class="custom_button neutral btn" style="margin-bottom: 25px;" type="submit" name="submit" value="Edit compare page" />
 
 </form>

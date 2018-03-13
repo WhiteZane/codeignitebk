@@ -23,10 +23,8 @@ if (isset($this->session->userdata['logged_in'])) {
 </style>
 <div class="gridContainer clearfix">
 	<div class="hero" ><img src = "<?php echo site_url(); ?>Images/Logosmall.png" alt="LindseyJones"></div>
-	<br /><a class="button" href="<?php echo site_url('adminController'); ?>"><button>Pages Archive</button></a><br />
-	<br /><a class="button" href="<?php echo site_url('editPage/'.$page_item[0]['pageID']); ?>"><button>Edit Page</button></a><br />
-	
-	
+	<br /><a class="custom_button red btn" href="<?php echo site_url('adminController'); ?>"><span style="font-size:14px;">&#8592</span> Back </a><br />
+	<br /><a class="custom_button neutral btn" href="<?php echo site_url('editPage/'.$page_item[0]['pageID']); ?>">Edit Page</a><br />
 	<div class="title"><?php echo $page_item[0]['pageHeaderTitle']; ?>	
 	</div>
 	<div class="tableCNT">
@@ -48,7 +46,7 @@ if (isset($this->session->userdata['logged_in'])) {
 	                	<td><?php echo (isset($content['compare2'])) ? $content['compare2'] : " "; ?></td>
 	                	<!-- check content ID and set it-->
 	                	<?php $content['contentID'] = (isset($content['contentID'])) ? $content['contentID'] : 0; ?>
-	                	<td><a class="button" 
+	                	<td><a class="custom_button neutral btn" 
 	                		href="
 	                		<?php 
 	                			$edit = $content['contentID'];
@@ -61,9 +59,9 @@ if (isset($this->session->userdata['logged_in'])) {
 	                			}  
 	                		?>"
 	                		>
-	                		<button>Edit</button></a></td>
+	                		Edit</a></td>
 							
-							<td><a onClick="return confirm('Are you sure you want to delete?')" class="button" 
+							<td><a onClick="return confirm('Are you sure you want to delete?')" class="custom_button red btn" 
 	                		href="
 	                		<?php 
 	                			$delete = $content['contentID'];
@@ -75,14 +73,14 @@ if (isset($this->session->userdata['logged_in'])) {
 	                			}  
 	                		?>"
 	                		>
-	                		<button>Delete</button></a></td>	                	
+	                		Delete</a></td>	                	
 	                		
 	          	</tr> 
 
 			 <?php endforeach;} ?> 
 
 		</table>
-		<a class="button" href="<?php echo site_url('createRow/' .$page_item[0]['pageID']) ?>"><button>+ Add Row</button></a>
+		<a class="custom_button btn" href="<?php echo site_url('createRow/' .$page_item[0]['pageID']) ?>">+ Add Row</a>
 	</div>
 
 </div>

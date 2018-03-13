@@ -60,7 +60,7 @@ img, object, embed, video {
 .title{
 	text-align:center;
 	font-size:40px;
-	Color:darkgreen;
+	color:darkgreen;
 		
 }
 
@@ -133,7 +133,6 @@ img, object, embed, video {
 	
 		
 }
-
 .foot{
 	width:100%;
 	height: auto;
@@ -155,9 +154,64 @@ img, object, embed, video {
 
 
 }
+.custom_button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+		.red {
+                color:white;
+                background-color:#f44336;
 
+        }
+        .neutral {
+                color:white;
+                background-color: #008CBA;
+        }
+        .control {
+                width:450px;
+                padding:10px;
+                margin:0 auto;
+        }
+        
+        .preview {
+                box-shadow: 0px 0px 1px 1px #EBEBEB;
+                border-radius: 5px;
+                width: 450px;
+                padding:10px;
+                min-height:200px;
+                margin:0 auto;
 
-
+        }
+        .pageName{
+                margin-top:10px;
+                margin-left:15px;
+        }
+        .pageView{
+                border-top: 1px solid #d0d0d0;
+                border-right: 1px solid #d0d0d0;
+                border-left: 1px solid #d0d0d0;
+                border-radius: 5px;
+                box-shadow: 0px 0px 1px 1px #EBEBEB;
+                width: 500px;
+                margin-top:50px; 
+                margin-right:50px;
+                display: inline-block;
+        }
+         .btn:visited{
+                color:white;
+        }
+        .btn:hover{
+                color:white;
+            box-shadow: 4px 4px grey;    
+        }
 
 
 }

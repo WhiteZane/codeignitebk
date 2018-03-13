@@ -11,9 +11,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LindseyJones vs Kettering</title>
 <link rel = "stylesheet" type = "text/css" 
-         href = "<?php echo site_url(); ?>_css/compare.css">
-<link rel = "stylesheet" type = "text/css" 
          href = "<?php echo site_url(); ?>_css/respiratoryreview/boilerplate.css">
+<link rel = "stylesheet" type = "text/css" 
+         href = "<?php echo site_url(); ?>_css/compare.css">
 
 <!-- 
 To learn more about the conditional comments around the html tags at the top of the file:

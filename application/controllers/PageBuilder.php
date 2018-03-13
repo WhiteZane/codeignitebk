@@ -88,7 +88,7 @@ class PageBuilder extends CI_Controller {
             $this->load->helper('form');
             $this->load->library('form_validation');
 
-            $data['title'] = 'Create a page';
+            $data['title'] = 'Create page';
 
             $this->form_validation->set_rules('pageName', 'Page Name', 'required');
             $this->form_validation->set_rules('pageHeaderTitle', 'Page title Header', 'required');
@@ -127,7 +127,7 @@ class PageBuilder extends CI_Controller {
                 $this->load->library('form_validation');
                 $data['page'] = $this->pageBuilder_model->get_page();
 
-                $data['title'] = 'Create a compare row';
+                $data['title'] = 'Create compare row';
 
                 $this->form_validation->set_rules('pageID', 'Page Identification', 'required');
                 $this->form_validation->set_rules('cDescription', 'Describe the comparison', 'required');
@@ -220,7 +220,7 @@ class PageBuilder extends CI_Controller {
                 $this->load->helper('form');
                 $this->load->library('form_validation');
 
-                $data['title'] = 'Edit a content item';        
+                $data['title'] = 'Edit content';        
                 $data['content_item'] = $this->pageBuilder_model->get_content_by_id($contentID);
                 
                 $this->form_validation->set_rules('pageID', 'Page Identification', 'required');

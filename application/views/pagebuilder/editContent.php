@@ -12,8 +12,13 @@ if (isset($this->session->userdata['logged_in'])) {
     form{margin-left:25px;
         margin-bottom: 25px;
     }
+    h1 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+  }
 </style>
-<h2><?php echo $title; ?></h2>
+<h1><?php echo $title; ?></h1>
 
 <?php echo validation_errors(); ?>
 
@@ -25,18 +30,18 @@ if (isset($this->session->userdata['logged_in'])) {
 
     <div class="pageRow_style">  
       <div class="pageColumn_style">
-        <label for="cDescription"> Row description </label><br />
+        <h2> Row description </h2><br />
         <textarea name="cDescription"><?php echo $content_item['cDescription'];?></textarea><br /><br />
       </div>
       <div class="pageColumn_style">
-        <label for="compare1"> Compare column 1 item</label><br />
+        <h2> Compare column 1 item</h2><br />
         <textarea name="compare1"><?php echo $content_item['compare1'];?></textarea><br /><br />
       </div>
       <div class="pageColumn_style">
-        <label for="compare2"> Compare column 2 item</label><br />
+        <h2> Compare column 2 item</h2><br />
         <textarea name="compare2"><?php echo $content_item['compare2'];?></textarea><br /><br />
       </div>
     </div>
-    <input type="submit" name="submit" value="Submit Edit" />
+    <input class="custom_button neutral btn" type="submit" name="submit" value="Submit Edit" />
 
 </form>
