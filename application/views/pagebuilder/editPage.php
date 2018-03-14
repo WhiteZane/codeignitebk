@@ -108,6 +108,6 @@
         </div>
       </div>
     
-    <input class="custom_button neutral btn" style="margin-bottom: 25px;" type="submit" name="submit" value="Edit compare page" />
+    <input class="custom_button neutral btn" style="margin-bottom: 25px;" type="submit" name="submit" value="Save Changes" />
 
 </form>

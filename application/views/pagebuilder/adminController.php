@@ -10,9 +10,6 @@ if (isset($this->session->userdata['logged_in'])) {
 ?>
 <style >
         body{margin-left:50px;}
-        
-        
-
 </style>
 <br /><br />
 <h1><?php echo $title; ?></h1>

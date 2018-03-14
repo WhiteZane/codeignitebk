@@ -22,14 +22,14 @@
       margin-bottom: 25px;
   }
 </style>
-<h2><?php echo $title; ?></h2>
+<h1><?php echo $title; ?></h1>
 
 <?php echo validation_errors(); ?>
 
 <?php echo form_open('createRow'); ?>
 
     <!--Builds the compare rows -->
-     <label for="pageID">Select Page Name</label><br /><br />
+     <h2>Select Page Name</h2><br /><br />
       <select name="pageID">
         <option value='<?php echo $currentpage; ?>'><?php echo $selected; ?></option>
         <?php foreach ($page as $page_item): ?>
@@ -38,19 +38,19 @@
       </select><br /><br />
     <div class="pageRow_style">  
       <div class="pageColumn_style">
-        <label for="cDescription"> Row description </label><br />
+        <h2> Row description </h2><br />
         <textarea name="cDescription"></textarea><br /><br />
       </div>
       <div class="pageColumn_style">
-        <label for="compare1"> Compare column 1 item</label><br />
+        <h2> Compare column 1 item</h2><br />
         <textarea name="compare1"></textarea><br /><br />
       </div>
       <div class="pageColumn_style">
-      <label for="compare2"> Compare column 2 item</label><br />
+      <h2> Compare column 2 item</h2><br />
       <textarea name="compare2"></textarea><br /><br />
       </div>
     </div>
-      <input type="submit" name="submit" value="Add compare item" />
+      <input class="custom_button btn neutral" type="submit" name="submit" value="Create Row" />
      
 
 </form>

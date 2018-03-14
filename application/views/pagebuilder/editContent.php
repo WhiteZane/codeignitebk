@@ -42,6 +42,6 @@ if (isset($this->session->userdata['logged_in'])) {
         <textarea name="compare2"><?php echo $content_item['compare2'];?></textarea><br /><br />
       </div>
     </div>
-    <input class="custom_button neutral btn" type="submit" name="submit" value="Submit Edit" />
+    <input class="custom_button neutral btn" type="submit" name="submit" value="Save Changes" />
 
 </form>

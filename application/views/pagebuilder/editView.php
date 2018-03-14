@@ -23,8 +23,10 @@ if (isset($this->session->userdata['logged_in'])) {
 </style>
 <div class="gridContainer clearfix">
 	<div class="hero" ><img src = "<?php echo site_url(); ?>Images/Logosmall.png" alt="LindseyJones"></div>
-	<br /><a class="custom_button red btn" href="<?php echo site_url('adminController'); ?>"><span style="font-size:14px;">&#8592</span> Back </a><br />
-	<br /><a class="custom_button neutral btn" href="<?php echo site_url('editPage/'.$page_item[0]['pageID']); ?>">Edit Page</a><br />
+	<br /><a class="custom_button btn red" href="<?php echo site_url('adminController'); ?>"> <- Back</a><br />
+	<br /><a class="custom_button btn neutral" href="<?php echo site_url('editPage/'.$page_item[0]['pageID']); ?>">Edit Page</a><br />
+	
+	
 	<div class="title"><?php echo $page_item[0]['pageHeaderTitle']; ?>	
 	</div>
 	<div class="tableCNT">
@@ -46,7 +48,7 @@ if (isset($this->session->userdata['logged_in'])) {
 	                	<td><?php echo (isset($content['compare2'])) ? $content['compare2'] : " "; ?></td>
 	                	<!-- check content ID and set it-->
 	                	<?php $content['contentID'] = (isset($content['contentID'])) ? $content['contentID'] : 0; ?>
-	                	<td><a class="custom_button neutral btn" 
+	                	<td><a class="custom_button btn neutral" 
 	                		href="
 	                		<?php 
 	                			$edit = $content['contentID'];
@@ -61,7 +63,7 @@ if (isset($this->session->userdata['logged_in'])) {
 	                		>
 	                		Edit</a></td>
 							
-							<td><a onClick="return confirm('Are you sure you want to delete?')" class="custom_button red btn" 
+							<td><a onClick="return confirm('Are you sure you want to delete?')" class="custom_button btn red" 
 	                		href="
 	                		<?php 
 	                			$delete = $content['contentID'];

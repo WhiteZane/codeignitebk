@@ -94,7 +94,7 @@ if (isset($this->session->userdata['logged_in'])) {
 
         </div>
       </div>
-    <input class="custom_button btn" style="margin-bottom: 25px;" type="submit" name="submit" value="Build compare page" />
+    <input class="custom_button btn" style="margin-bottom: 25px;" type="submit" name="submit" value="Build Page" />
 
 </form>
 
