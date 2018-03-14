@@ -18,8 +18,13 @@
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tinymce/tinymce.min.js"></script> 
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tiny.js"></script> 
 <style >
-	form{margin-left:50px;
+	form{margin-left:25px;
       margin-bottom: 25px;
+  }
+     h1 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 25px;
   }
 </style>
 <h1><?php echo $title; ?></h1>
@@ -50,7 +55,7 @@
       <textarea name="compare2"></textarea><br /><br />
       </div>
     </div>
-      <input class="custom_button btn neutral" type="submit" name="submit" value="Create Row" />
+      <input class="custom_button btn neutral" type="submit" name="submit" value="Build Row" />
      
 
 </form>

@@ -10,7 +10,7 @@
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tiny.js"></script>
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/jscolor.js"></script>   
 <style >
-    form{margin-left:50px;
+    form{margin-left:25px;
         margin-bottom: 25px;
     }
     h1 {
