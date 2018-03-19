@@ -93,9 +93,22 @@ class PageBuilder_model extends CI_Model {
 				public function set_page($pageID = 0)
 				{
 			    $this->load->helper('url');
-
+			    $this->load->library('upload');
+			    
 			    $slug = url_title($this->input->post('pageName'), 'dash', TRUE);
+			     //get the filename
+			   	$img = $this->upload->data();
 
+			   	if (!empty($img)){
+                    $file_name = $img['file_name'];
+                } else if (!empty($this->input->post('fileName')))
+			     {
+			     	$file_name = $this->input->post('fileName');
+             	} else {
+             		$file_name = "";
+             	}
+			     
+			    
 			    $data = array(
 			        'pageName' => $this->input->post('pageName'),
 			        'slug' => $slug,
@@ -106,7 +119,8 @@ class PageBuilder_model extends CI_Model {
 			        'pageFooter' => $this->input->post('pageFooter'),
 			        'headColor' => $this->input->post('headColor'),
 			        'rowColor' => $this->input->post('rowColor'),
-			        'rowColor2' => $this->input->post('rowColor2')
+			        'rowColor2' => $this->input->post('rowColor2'),
+			        'imgName'	=> $file_name
 		    	);
 		    		//set default content
 			    

@@ -5,7 +5,11 @@
   $newURL = 'http://rtcompare.com/';
   header('Location: '.$newURL);          
  }
+ 
+  $imageLocation = (isset($page_item['imgName'])) ? $page_item['imgName'] : ""; 
+  
 ?>
+
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tinymce/tinymce.min.js"></script> 
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tiny.js"></script>
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/jscolor.js"></script>   
@@ -24,7 +28,7 @@
 
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('editPage/'.$page_item['pageID']); 
+<?php echo form_open_multipart('editPage/'.$page_item['pageID']); 
   //print_r($page_item);
   //set colors
   $page_item['headColor'] = (isset($page_item['headColor'])) ? $page_item['headColor'] : 'F5F5F5';
@@ -44,6 +48,12 @@
     <h2>Page Name (url)</h2><br />
     <input type="input" name="pageName" value="<?php echo $page_item['pageName'];?>" /><br /><br />
 
+    <h2> Logo image </h2>
+    <p>Current image File: <span style="color:blue;"><?php echo $imageLocation;?></span></p><br /><br />
+    <input type="hidden" name="fileName" value="<?php print_r($imageLocation);?>">
+   
+    <input style="margin-bottom: 25px;" type="file" name="userfile"><br />
+    
     <h2> Page Header</h2><br />
     <textarea name="pageHeaderTitle"><?php echo $page_item['pageHeaderTitle'];?></textarea><br /><br />
 

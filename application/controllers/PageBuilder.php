@@ -87,18 +87,18 @@ class PageBuilder extends CI_Controller {
         {
             $this->load->helper('form');
             $this->load->library('form_validation');
-
+            
             $data['title'] = 'Create page';
 
-            $this->form_validation->set_rules('pageName', 'Page Name', 'required');
-            $this->form_validation->set_rules('pageHeaderTitle', 'Page title Header', 'required');
+            $this->form_validation->set_rules('pageName', 'Page Name', 'trim|required');
+            $this->form_validation->set_rules('pageHeaderTitle', 'Page title Header', 'trim|required');
             $this->form_validation->set_rules('pRowDescription', 'Title column 0', 'trim|alpha_numeric|max_length[30]');
-            $this->form_validation->set_rules('pTableCompare1', 'Title column 1', 'required');
-            $this->form_validation->set_rules('pTableCompare2', 'Title column 2', 'required');
-            $this->form_validation->set_rules('pageFooter', 'Page Footer', 'required');
-            $this->form_validation->set_rules('headColor', 'Header Color', 'required');
-            $this->form_validation->set_rules('rowColor', 'Row 1 Color', 'required');
-            $this->form_validation->set_rules('rowColor2', 'Row 2 Color', 'required');
+            $this->form_validation->set_rules('pTableCompare1', 'Title column 1', 'trim|required');
+            $this->form_validation->set_rules('pTableCompare2', 'Title column 2', 'trim|required');
+            $this->form_validation->set_rules('pageFooter', 'Page Footer', 'trim|required');
+            $this->form_validation->set_rules('headColor', 'Header Color', 'trim|required');
+            $this->form_validation->set_rules('rowColor', 'Row 1 Color', 'trim|required');
+            $this->form_validation->set_rules('rowColor2', 'Row 2 Color', 'trim|required');
 
             if ($this->form_validation->run() === FALSE)
             {
@@ -109,10 +109,42 @@ class PageBuilder extends CI_Controller {
             }
             else
             {
-                $this->pageBuilder_model->set_page();
-                $pageID = $this->pageBuilder_model->get_last_page();
-                $this->pageBuilder_model->default_content($pageID);
-                redirect( base_url() . 'adminController');
+                //checking for the image file
+                if (empty($_FILES['userfile']['name']))
+                {
+                        $this->pageBuilder_model->set_page();
+                        $pageID = $this->pageBuilder_model->get_last_page();
+                        $this->pageBuilder_model->default_content($pageID);
+                        redirect( base_url() . 'adminController');
+                }else{
+                    // image upload rules
+                    $config['upload_path']          = './uploads/';
+                    $config['allowed_types']        = 'gif|jpg|png';
+                    $config['max_size']             = 100;
+                    $config['max_width']            = 1024;
+                    $config['max_height']           = 768;
+
+                    // getting the upload library setting the rules
+                    $this->load->library('upload', $config);
+
+                    if($this->upload->do_upload('userfile'))
+                    {
+                        $img = $this->upload->data();
+                        $file_name = $img['file_name'];
+
+                        $this->pageBuilder_model->set_page();
+                        $pageID = $this->pageBuilder_model->get_last_page();
+                        $this->pageBuilder_model->default_content($pageID);
+                        redirect( base_url() . 'adminController');
+                    } else {
+                        echo $this->upload->display_errors();
+
+                    }
+
+                }
+                
+                
+                
             }
         }
         public function createRow()
@@ -193,7 +225,7 @@ class PageBuilder extends CI_Controller {
                 $this->form_validation->set_rules('headColor', 'Header Color', 'required');
                 $this->form_validation->set_rules('rowColor', 'Row 1 Color', 'required');
                 $this->form_validation->set_rules('rowColor2', 'Row 2 Color', 'required');       
-         
+                
                 if ($this->form_validation->run() === FALSE)
                 {
                     $this->load->view('templates/header', $data);
@@ -203,10 +235,39 @@ class PageBuilder extends CI_Controller {
                 }
                 else
                 {
-                    $this->pageBuilder_model->set_page($pageID);
-                    redirect(base_url() . 'adminController');
-                    //redirect( base_url() . '/pagebuilder');
+                //checking for the image file
+                if (empty($_FILES['userfile']['name']))
+                {
+                        $this->pageBuilder_model->set_page($pageID);
+                        redirect( base_url() . 'adminController');
+                } else {
+                    // image upload rules
+                    $config['upload_path']          = './uploads/';
+                    $config['allowed_types']        = 'gif|jpg|png';
+                    $config['max_size']             = 100;
+                    $config['max_width']            = 1024;
+                    $config['max_height']           = 768;
+
+                    // getting the upload library setting the rules
+                    $this->load->library('upload', $config);
+
+                    if($this->upload->do_upload('userfile'))
+                    {
+                        $img = $this->upload->data();
+                        $file_name = $img['file_name'];
+
+                        $this->pageBuilder_model->set_page($pageID);
+                        redirect( base_url() . 'adminController');
+                    } else {
+                        echo $this->upload->display_errors();
+
+                    }
+
                 }
+                
+                
+                
+            }
         }
         public function editContent()
         {

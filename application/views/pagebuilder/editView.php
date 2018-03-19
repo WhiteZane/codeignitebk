@@ -7,9 +7,13 @@ if (isset($this->session->userdata['logged_in'])) {
   } else {
   $newURL = 'http://rtcompare.com/';
   header('Location: '.$newURL);
- 
 }
+//check for an image and set it
+$imageLocation = (isset($page_item[0]['imgName'])) ? 'uploads/' .  $page_item[0]['imgName'] : "";
 ?>
+
+
+
 <style>
 	.comparetable tr:nth-child(2n+3){
 		background-color:#<?php echo (isset($page_item[0]['rowColor2'])) ? $page_item[0]['rowColor2'] : ""; ?>;	
@@ -22,9 +26,10 @@ if (isset($this->session->userdata['logged_in'])) {
 	}
 </style>
 <div class="gridContainer clearfix">
-	<div class="hero" ><img src = "<?php echo site_url(); ?>Images/Logosmall.png" alt="LindseyJones"></div>
 	<br /><a class="custom_button btn red" href="<?php echo site_url('adminController'); ?>"> <- Back</a><br />
 	<br /><a class="custom_button btn neutral" href="<?php echo site_url('editPage/'.$page_item[0]['pageID']); ?>">Edit Page</a><br />
+	<div class="hero" ><img src = "<?php echo site_url() . $imageLocation; ?>" alt=""></div>
+	
 	
 	
 	<div class="title"><?php echo $page_item[0]['pageHeaderTitle']; ?>	

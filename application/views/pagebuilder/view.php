@@ -2,7 +2,9 @@
 <?php
 //print_r($page_item);
 //print_r($page_content);
+
 ?>
+<?php $imageLocation = (isset($page_item[0]['imgName'])) ? 'uploads/' .  $page_item[0]['imgName'] : ""; ?>
 <style>
 	.comparetable tr:nth-child(2n+3){
 		background-color:#<?php echo (isset($page_item[0]['rowColor2'])) ? $page_item[0]['rowColor2'] : ""; ?>;	
@@ -15,7 +17,8 @@
 	}
 </style>
 <div class="gridContainer clearfix">
-	<div class="hero" ><img src = "<?php echo site_url(); ?>Images/Logosmall.png" alt="LindseyJones"></div>
+	<div class="hero" ><img src = "<?php echo site_url() . $imageLocation; ?>" alt="" ></div>
+	
 	<div class="title"><?php echo $page_item[0]['pageHeaderTitle']; ?>
 		
 	</div>

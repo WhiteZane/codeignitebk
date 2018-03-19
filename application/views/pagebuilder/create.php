@@ -25,12 +25,15 @@ if (isset($this->session->userdata['logged_in'])) {
 
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('create'); ?>
+<?php echo form_open_multipart('create'); ?>
 	
 	<!--Builds the outside of the page -->
     <h2>Page Name (url)</h2><br />
     <input type="input" name="pageName" /><br /><br />
-
+    
+    <h2> Logo image </h2>
+    <input style="margin-bottom: 25px;" type="file" name="userfile"><br>
+    
     <h2> Page Header</h2><br />
     <textarea name="pageHeaderTitle"></textarea><br /><br />
     <div class="pageRow_style">
@@ -90,10 +93,10 @@ if (isset($this->session->userdata['logged_in'])) {
           </p>
           <br /><br />
 
-          
-
         </div>
       </div>
+     
+
     <input class="custom_button btn" style="margin-bottom: 25px;" type="submit" name="submit" value="Build Page" />
 
 </form>
