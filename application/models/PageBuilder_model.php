@@ -24,7 +24,9 @@ class PageBuilder_model extends CI_Model {
 
         		$query = $this->db->select('*'); // SELECT columns
 				$query = $this->db->join ('content', 'content.pageID = page.pageID'); // CONDITION
+				$query = $this->db->order_by('content.rowOrder');
 				$query = $this->db->get_where('page', array('slug' => $slug));
+
 			    
 			    $result = $query->result_array();
 			    
@@ -53,6 +55,7 @@ class PageBuilder_model extends CI_Model {
 				//$query = $this->db->from('page'); // Do not need from statement
 				$query = $this->db->join ('content', 'content.pageID = page.pageID'); // CONDITION
 				 // FROM clause*/ $query = $this->db->get();
+				$query = $this->db->order_by('content.rowOrder');
 				$query = $this->db->get_where('page', array('page.pageID' => $pageID));
 			    $result = $query->result_array();
 			    
@@ -138,12 +141,13 @@ class PageBuilder_model extends CI_Model {
 				    $this->load->helper('url');
 
 				    //$slug = url_title($this->input->post('pageName'), 'dash', TRUE);
-
+				    $rowCount = $this->input->post('rowCount');
 				    $data = array(
 				        'cDescription' => $this->input->post('cDescription'),
 				        'compare1' => $this->input->post('compare1'),
 				        'compare2' => $this->input->post('compare2'),
 				        'pageID' => $this->input->post('pageID'),
+				        'rowOrder' => $rowCount
 			    	);
 				    
 				    if ($contentID == 0) {
@@ -163,6 +167,9 @@ class PageBuilder_model extends CI_Model {
 				}
 				public function default_content($pageID = 0)
 				{
+					//setup row assignment with 1 
+					$firstRow = 1;
+
 					$cDescription = 'Use edit view to edit content';
 					$compare1 = 'column1 test';
 					$compare2 = 'column2 test';
@@ -174,7 +181,8 @@ class PageBuilder_model extends CI_Model {
 				        'cDescription' => $cDescription,
 				        'compare1' => $compare1,
 				        'compare2' => $compare2,
-				        'pageID' => $pageID
+				        'pageID' => $pageID,
+				        'rowOrder' => $firstRow
 			    	);
 			    	if ($pageID == FALSE) {
 	            			echo "error";

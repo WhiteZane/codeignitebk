@@ -14,6 +14,7 @@
     $currentpage = 'select a page';
     $selected = 'select a page';
   }
+
 ?>
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tinymce/tinymce.min.js"></script> 
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tiny.js"></script> 
@@ -55,6 +56,7 @@
       <textarea name="compare2"></textarea><br /><br />
       </div>
     </div>
+      <input type="hidden" name="rowCount" value="<?php echo $rowCount?>">
       <input class="custom_button btn neutral" type="submit" name="submit" value="Build Row" />
      
 

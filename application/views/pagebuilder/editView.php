@@ -87,7 +87,8 @@ $imageLocation = (isset($page_item[0]['imgName'])) ? 'uploads/' .  $page_item[0]
 			 <?php endforeach;} ?> 
 
 		</table>
-		<a class="custom_button btn" href="<?php echo site_url('createRow/' .$page_item[0]['pageID']) ?>">+ Add Row</a>
+		<?php $lastRow = (isset(end($page_item)['rowOrder'])) ? end($page_item)['rowOrder'] : 0; ?>
+		<a class="custom_button btn" href="<?php echo site_url('createRow/' .$page_item[0]['pageID']). '/' . $lastRow ?>">+ Add Row</a>
 	</div>
 
 </div>

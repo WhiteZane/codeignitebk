@@ -150,10 +150,15 @@ class PageBuilder extends CI_Controller {
         public function createRow()
         {
             $pageID = $this->uri->segment(2);
+            $rowOrderNum = $this->uri->segment(3);
+            $nextRow = $rowOrderNum + 1;
+
             if (!empty($pageID)){
                $data['currentpage'] = $pageID; 
             }
-
+            if (!empty($nextRow)){
+               $data['rowCount'] = $nextRow; 
+            }
 
                 $this->load->helper('form');
                 $this->load->library('form_validation');
@@ -166,6 +171,7 @@ class PageBuilder extends CI_Controller {
                 $this->form_validation->set_rules('compare1', ' column 1', 'required');
                 $this->form_validation->set_rules('compare2', ' column 2', 'required');
                 $pageID = $this->input->post('pageID');
+                $rowCount = $this->input->post('rowCount');
                 if ($this->form_validation->run() === FALSE)
                 {
                     $this->load->view('templates/header', $data);
