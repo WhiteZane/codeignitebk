@@ -5,6 +5,7 @@ class PageBuilder extends CI_Controller {
         {
                 parent::__construct();
                 $this->load->model('pageBuilder_model');
+                $this->load->model('pageBuilder_model', 'm');
                 $this->load->helper('url_helper');
                 $this->load->library('session');
         }
@@ -309,7 +310,7 @@ class PageBuilder extends CI_Controller {
                     redirect( base_url() . 'editView/' . $pageID);
                 }
         }
-
+        //replacing with ajax version
         public function deleteContent()
         {
                 $contentID = $this->uri->segment(2);
@@ -331,6 +332,17 @@ class PageBuilder extends CI_Controller {
                     redirect( base_url() . 'editView/' . $pageID);
                 
         }
+        //ajax version of delete content
+        public function deleteRow (){
+            $result = $this->m->deleteRow();
+            $msg['success'] = FALSE;
+            
+            if($result){
+                $msg['success'] = TRUE;
+            }
+            echo json_encode($msg);
+        }
+            
 
         public function deletePage()
         {
@@ -350,5 +362,29 @@ class PageBuilder extends CI_Controller {
                     redirect(base_url() . 'adminController');
                 
         }
-                    
+        public function showAllRows(){
+          $pageID = $this->uri->segment(2);
+          $result = $this->m->showAllRows($pageID);
+          echo json_encode($result);
+        }
+        //ajax move row up
+        public function rowUp (){
+            $result = $this->m->rowUp();
+            $msg['success'] = FALSE;
+            
+            if($result){
+                $msg['success'] = TRUE;
+            }
+            echo json_encode($msg);
+        }
+        //ajax move row down
+        public function rowDown (){
+            $result = $this->m->rowDown();
+            $msg['success'] = FALSE;
+            
+            if($result){
+                $msg['success'] = TRUE;
+            }
+            echo json_encode($msg);
+        }
 }

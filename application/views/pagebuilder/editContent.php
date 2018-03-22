@@ -5,6 +5,7 @@ if (isset($this->session->userdata['logged_in'])) {
   $newURL = 'http://rtcompare.com/';
   header('Location: '.$newURL);
 }
+//print_r($content_item);
 ?>
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tinymce/tinymce.min.js"></script> 
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tiny.js"></script> 
@@ -27,7 +28,7 @@ if (isset($this->session->userdata['logged_in'])) {
     <!--Builds the compare rows -->
     
     <input type="hidden" name="pageID" value="<?php echo $content_item['pageID'];?>">
-
+     <input type="hidden" name="rowCount" value="<?php echo $content_item['rowOrder'];?>">
     <div class="pageRow_style">  
       <div class="pageColumn_style">
         <h2> Row description </h2><br />

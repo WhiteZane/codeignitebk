@@ -14,7 +14,10 @@
          href = "<?php echo site_url(); ?>_css/respiratoryreview/boilerplate.css">
 <link rel = "stylesheet" type = "text/css" 
          href = "<?php echo site_url(); ?>_css/compare.css">
-
+<link rel = "stylesheet" type = "text/css" 
+         href = "<?php echo site_url(); ?>_css/bootstrap.min.css">
+<link rel = "stylesheet" type = "text/css" 
+         href = "<?php echo site_url(); ?>_css/bootstrap-theme.min.css">
 <!-- 
 To learn more about the conditional comments around the html tags at the top of the file:
 paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/

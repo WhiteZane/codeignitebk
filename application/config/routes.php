@@ -57,8 +57,17 @@ $route['editContent/(:any)'] = 'pageBuilder/editContent/$1';
 $route['editPage/(:any)'] = 'pageBuilder/editPage/$1';
 $route['editView/(:any)'] = 'pageBuilder/editView/$1';
 $route['createRow/(:any)/(:num)'] = 'pageBuilder/createRow/$1/$2';
+//ajax delete
+$route['deleteRow'] = 'pageBuilder/deleteRow';
+//ajax row order up
+$route['rowUp'] = 'pageBuilder/rowUp';
+//ajax row order down
+$route['rowDown'] = 'pageBuilder/rowDown';
+
 $route['createRow'] = 'pageBuilder/createRow';
 $route['create'] = 'pageBuilder/create';
+$route['showAllRows/(:any)'] = 'pageBuilder/showAllRows/$1';
+$route['showAllRows'] = 'pageBuilder/showAllRows';
 $route['adminController'] = 'pageBuilder/adminController';
 $route['(:any)'] = 'pageBuilder/view/$1';
 $route['pagebuilder'] = 'pageBuilder';

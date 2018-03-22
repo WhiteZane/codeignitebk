@@ -200,6 +200,85 @@ class PageBuilder_model extends CI_Model {
         			$this->db->where('pageID', $pageID);
         			return $this->db->delete( array('content','page'));
     			}
+    			public function showAllRows($pageID=0){
+    				
+    				$query = $this->db->get('content');
+    				if ($pageID === 0)
+				        {
+				            $query = $this->db->get('page');
+				            return $query->result_array();
+				        }
+				 
+				$query = $this->db->select('*'); // SELECT columns
+				//$query = $this->db->from('page'); // Do not need from statement
+				$query = $this->db->join ('content', 'content.pageID = page.pageID'); // CONDITION
+				 // FROM clause*/ $query = $this->db->get();
+				$query = $this->db->order_by('content.rowOrder');
+				$query = $this->db->get_where('page', array('page.pageID' => $pageID));
+			    $result = $query->result_array();
+			    
+			    //if result array gets a result
+			    if ($result) {
+			    	$query->result_array();
+        		 	return $query->result_array();
+			    } else {
+			    	$query1 = $this->db->get_where('page', array('page.pageID' => $pageID));
+        		 	return $query1->result_array();
+			    }
+    			}
+    			function deleteRow(){
+    				$id = $this->input->get('id');
+    				$this->db->where('contentID', $id);
+    				$this->db->delete('content');
+    				if ($this->db->affected_rows() > 0){
+    					return true;
+    				}else{
+    					return false;
+    				}
+    			}
+    			//moving row up
+    			function rowUp(){
+    				$contentID = $this->input->get('id');
+    				$amount = 1; 
+    				 $query = $this->db->get_where('content', array('contentID' => $contentID));
+			         $query->row_array();
+
+    				
+
+			        $this->db->set("rowOrder", "rowOrder + $amount", FALSE); 
+				    $this->db->where('contentID', $contentID);
+	            	$this->db->update('content');
+    				//$this->db->where('contentID', $id);
+    				//$this->db->update('content');
+    				
+    				if ($this->db->affected_rows() > 0){
+    					return true;
+    				}else{
+    					return false;
+    				}
+    			}
+
+    			//moving row down
+    			function rowDown(){
+    				$contentID = $this->input->get('id');
+    				$amount = 1; 
+    				 $query = $this->db->get_where('content', array('contentID' => $contentID));
+			         $query->row_array();
+
+    				
+
+			        $this->db->set("rowOrder", "rowOrder - $amount", FALSE); 
+				    $this->db->where('contentID', $contentID);
+	            	$this->db->update('content');
+    				//$this->db->where('contentID', $id);
+    				//$this->db->update('content');
+    				
+    				if ($this->db->affected_rows() > 0){
+    					return true;
+    				}else{
+    					return false;
+    				}
+    			}
 
 }
 

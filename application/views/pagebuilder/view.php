@@ -34,7 +34,6 @@
      			foreach ($page_item as $content ):  ?>
 
 	    		<tr>
-	    			<td><?php echo (isset($content['rowOrder'])) ? $content['rowOrder'] : " "; ?></td>
 	        		<td><?php echo (isset($content['cDescription'])) ? $content['cDescription'] : " "; ?></td>
 	                	<td><?php echo (isset($content['compare1']))? $content['compare1'] : " "; ?></td>
 	                	<td><?php echo (isset($content['compare2']))? $content['compare2'] : " "; ?></td>
