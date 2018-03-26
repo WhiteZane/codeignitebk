@@ -151,8 +151,8 @@ class PageBuilder extends CI_Controller {
         public function createRow()
         {
             $pageID = $this->uri->segment(2);
-            $rowOrderNum = $this->uri->segment(3);
-            $nextRow = $rowOrderNum + 1;
+            //$rowOrderNum = $this->uri->segment(3);
+           
 
             if (!empty($pageID)){
                $data['currentpage'] = $pageID; 
@@ -164,7 +164,7 @@ class PageBuilder extends CI_Controller {
                 $this->load->helper('form');
                 $this->load->library('form_validation');
                 $data['page'] = $this->pageBuilder_model->get_page();
-
+                 $data['rows'] = $this->pageBuilder_model->get_editView_by_id($pageID);
                 $data['title'] = 'Create Row';
 
                 $this->form_validation->set_rules('pageID', 'Page Identification', 'required');

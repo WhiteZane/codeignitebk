@@ -65,8 +65,7 @@ $pageNum = $page_item[0]['pageID'];
 	    	</tbody>
 
 		</table>
-		<?php $lastRow = (isset(end($page_item)['rowOrder'])) ? end($page_item)['rowOrder'] : 0; ?>
-		<a href="<?php echo site_url('createRow/' .$page_item[0]['pageID']). '/' . $lastRow ?>" class="custom_button btn">+ Add Row</a>
+		<a href="<?php echo site_url('createRow/' .$page_item[0]['pageID'])?>" class="custom_button btn">+ Add Row</a>
 		
 	</div>
 </div>

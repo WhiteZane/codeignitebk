@@ -14,8 +14,14 @@
     $currentpage = 'select a page';
     $selected = 'select a page';
   }
-
 ?>
+
+<?php 
+  // find the last row from previous page 
+  $lastRow = (isset(end($rows)['rowOrder'])) ? end($rows)['rowOrder'] : 0; 
+  $lastRow += 1;
+  print_r($lastRow);
+  ?>
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tinymce/tinymce.min.js"></script> 
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tiny.js"></script> 
 <style >
@@ -56,7 +62,7 @@
       <textarea name="compare2"></textarea><br /><br />
       </div>
     </div>
-      <input type="hidden" name="rowCount" value="<?php echo $rowCount?>">
+      <input type="hidden" name="rowCount" value="<?php echo $lastRow?>">
       <input class="custom_button btn neutral" type="submit" name="submit" value="Build Row" />
      
 
