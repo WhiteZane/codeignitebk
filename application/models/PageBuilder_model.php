@@ -237,15 +237,35 @@ class PageBuilder_model extends CI_Model {
     				}
     			}
     			//moving row up
-    			function rowUp(){
+    			function rowDown(){
     				$contentID = $this->input->get('id');
-    				$amount = 1; 
+    				$move = 1; 
+
+    				 
+    				//start finding info 
+    				 $query = $this->db->select('pageID, rowOrder', FALSE);
+    				 $query = $this->db->get_where('content', array('contentID' => $contentID));
+    				 $data = $query->row_array();
+    				
+    				$pageID = $data['pageID'];
+    				$rowNum = (int) $data['rowOrder'];
+    				$rowUpdate = $rowNum + 1 ;
+    				$updateRow = $rowUpdate - $move;
+
+    				//add to number before this row 
+    				$this->db->set("rowOrder", $updateRow); 
+				    $this->db->where('rowOrder', $rowUpdate)->where('pageID', $pageID);
+	            	$this->db->update('content');
+	            	
+	            	//start query to subtract from selected row
+    				 
+    				 //get the row from database
     				 $query = $this->db->get_where('content', array('contentID' => $contentID));
 			         $query->row_array();
-
+			         
     				
-
-			        $this->db->set("rowOrder", "rowOrder + $amount", FALSE); 
+			         // subtract one from row order 
+			        $this->db->set("rowOrder", "rowOrder + $move", FALSE); 
 				    $this->db->where('contentID', $contentID);
 	            	$this->db->update('content');
     				//$this->db->where('contentID', $id);
@@ -259,15 +279,36 @@ class PageBuilder_model extends CI_Model {
     			}
 
     			//moving row down
-    			function rowDown(){
+    			function rowUp(){
+    				
     				$contentID = $this->input->get('id');
-    				$amount = 1; 
+    				$move = 1; 
+
+    				 
+    				//start finding info 
+    				  $query = $this->db->select('pageID, rowOrder', FALSE);
+    				 $query = $this->db->get_where('content', array('contentID' => $contentID));
+    				 $data = $query->row_array();
+    				
+    				$pageID = $data['pageID'];
+    				$rowNum = (int) $data['rowOrder'];
+    				$rowUpdate = $rowNum - 1 ;
+    				$updateRow = $rowUpdate + $move;
+
+    				//add to number before this row 
+    				$this->db->set("rowOrder", $updateRow);  
+				    $this->db->where('rowOrder', $rowUpdate)->where('pageID', $pageID);
+	            	$this->db->update('content');
+	            	
+	            	//start query to subtract from selected row
+    				 
+    				 //get the row from database
     				 $query = $this->db->get_where('content', array('contentID' => $contentID));
 			         $query->row_array();
 
     				
-
-			        $this->db->set("rowOrder", "rowOrder - $amount", FALSE); 
+			         // subtract one from row order 
+			        $this->db->set("rowOrder", "rowOrder - $move", FALSE); 
 				    $this->db->where('contentID', $contentID);
 	            	$this->db->update('content');
     				//$this->db->where('contentID', $id);

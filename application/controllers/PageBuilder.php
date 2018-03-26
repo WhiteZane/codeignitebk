@@ -368,8 +368,8 @@ class PageBuilder extends CI_Controller {
           echo json_encode($result);
         }
         //ajax move row up
-        public function rowUp (){
-            $result = $this->m->rowUp();
+        public function rowDown(){
+            $result = $this->m->rowDown();
             $msg['success'] = FALSE;
             
             if($result){
@@ -378,8 +378,8 @@ class PageBuilder extends CI_Controller {
             echo json_encode($msg);
         }
         //ajax move row down
-        public function rowDown (){
-            $result = $this->m->rowDown();
+        public function rowUp(){
+            $result = $this->m->rowUp();
             $msg['success'] = FALSE;
             
             if($result){

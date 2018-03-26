@@ -15,20 +15,20 @@ $pageNum = $page_item[0]['pageID'];
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/jquery-3.3.1.min.js"></script>
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/bootstrap.min.js"></script>
 <style>
-	.comparetable tr:nth-child(2n+3){
+	.comparetable tbody tr:nth-child(even){
 		background-color:#<?php echo (isset($page_item[0]['rowColor2'])) ? $page_item[0]['rowColor2'] : ""; ?>;	
 	}
-	.comparetable tr:nth-child(2n){
+	.comparetable tbody tr:nth-child(odd){
 		background-color:#<?php echo (isset($page_item[0]['rowColor'])) ? $page_item[0]['rowColor'] : ""; ?>;
 	}
 	.comparetable thead{
 		background-color:#<?php echo (isset($page_item[0]['headColor'])) ? $page_item[0]['headColor'] : ""; ?>;
 	}
-	.comparetable tr:nth-child(1) td{
+	/*.comparetable tr:nth-child(1) td{
 		    color: #646464;
 		    font-size: 16px;
 		    text-align:left;
-	}
+	}*/
 	.arrow a{
 		font-size: 20px;
 		color:#008CBA;
@@ -48,7 +48,7 @@ $pageNum = $page_item[0]['pageID'];
 	
 	</div>
 	<div class="tableCNT">
-	  	<table class="comparetable">
+	  	<table class="comparetable" id="comparetable">
 	  		
 	  		<thead>
 		  		<tr>
@@ -92,11 +92,12 @@ $pageNum = $page_item[0]['pageID'];
 		$(function(){
 			//call to function
 			showAllRows();
-			
+			removeArrows();
 			
 			
 
 			//function 
+
 			function showAllRows(){
 				
 				$.ajax({
@@ -125,7 +126,8 @@ $pageNum = $page_item[0]['pageID'];
 												editBtn = edit + IDcontent;}
 										deleteBtn = del + IDcontent + '/' + IDpage ;
 							
-							//creating the rows 
+							//creating the rows
+
 							html += '<tr>'+
 										'<td>'+data[i].rowOrder+
 										'<span class="arrow">'+
@@ -142,7 +144,7 @@ $pageNum = $page_item[0]['pageID'];
 									'</tr>';
 									
 						}
-						
+
 						$('#showdata').html(html);
 						console.log(data);
 					},
@@ -154,12 +156,18 @@ $pageNum = $page_item[0]['pageID'];
 
 			}
 			
+			//function test for first and last row
+			function removeArrows(){
+				$(".item-up:first").css("visibility", "hidden" );
+				$(".item-down:last").css("visibility", "hidden" );
+			}
+
 			//delete
 			$('#showdata').on('click', '.item-delete', function(){
 				var id = $(this).attr('data');
 				$('#deleteModal').modal('show');
 
-				$('#btnDelete').click(function(){
+				$('#btnDelete').unbind().click(function(){
 					$.ajax({
 						type:'ajax',
 						method:'get',
@@ -172,6 +180,7 @@ $pageNum = $page_item[0]['pageID'];
 								$('#deleteModal').modal('hide');
 								$('alert-success').html('Row Deleted successfully').fadeIn().delay(4000).fadeOut('slow');
 								showAllRows();
+								removeArrows();
 							}else{
 								alert('error');
 							}
@@ -194,13 +203,14 @@ $pageNum = $page_item[0]['pageID'];
 					type:'ajax',
 					method:'get',
 					async: false,
-					url:'<?php echo base_url() ?>rowUp',
+					url:'<?php echo base_url() ?>rowDown',
 					data:{id:id},
 					dataType: 'json',
 					success:function(response){
 							if(response.success){
 								$('alert-success').html('Row moved successfully').fadeIn().delay(4000).fadeOut('slow');
 								showAllRows();
+								removeArrows();
 							}else{
 								alert('error');
 							}
@@ -220,13 +230,14 @@ $pageNum = $page_item[0]['pageID'];
 					type:'ajax',
 					method:'get',
 					async: false,
-					url:'<?php echo base_url() ?>rowDown',
+					url:'<?php echo base_url() ?>rowUp',
 					data:{id:id},
 					dataType: 'json',
 					success:function(response){
 							if(response.success){
 								$('alert-success').html('Row moved successfully').fadeIn().delay(4000).fadeOut('slow');
 								showAllRows();
+								removeArrows();
 							}else{
 								alert('error');
 							}
@@ -234,6 +245,7 @@ $pageNum = $page_item[0]['pageID'];
 						},
 						error:function(){
 							alert('error moving row');
+
 						}
 				});
 			});

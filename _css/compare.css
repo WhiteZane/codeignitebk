@@ -81,26 +81,26 @@ img, object, embed, video {
 	border-style:none;	
 }
 
-.comparetable tr:nth-child(2n+3){
+/*.comparetable tr:nth-child(1n+3){
 	background-color:#E8F5F8;
 	
 }
-.comparetable tr:nth-child(2n){
+.comparetable tr:nth-child(1n){
 	background-color:#FAFCFD;	
-}
-.comparetable tr td:nth-child(1){
+}*/
+/*.comparetable tr td:nth-child(1){
 	font-weight:bold;
 	color:#646464;
 	font-size:16px;
 	width:300px;	
-}
+}*/
 
-.comparetable tr:nth-child(1) td{
+/*.comparetable tr:nth-child(1) td{
 	
 	color:darkblue;
 	font-size:28px;	
 	text-align: center;
-}
+}*/
 
 .lindsey{
 	font-family:Georgia, "Times New Roman", Times, serif;	
