@@ -15,6 +15,16 @@ $pageNum = $page_item[0]['pageID'];
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/jquery-3.3.1.min.js"></script>
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/bootstrap.min.js"></script>
 <style>
+	.comparetable tr td:nth-child(1){
+	width:100px;	
+}
+	
+	.comparetable tr td:nth-child(2){
+	font-weight:bold;
+	color:#646464;
+	font-size:16px;
+	width:300px;	
+}
 	.comparetable tbody tr:nth-child(even){
 		background-color:#<?php echo (isset($page_item[0]['rowColor2'])) ? $page_item[0]['rowColor2'] : ""; ?>;	
 	}
@@ -32,9 +42,12 @@ $pageNum = $page_item[0]['pageID'];
 	.arrow a{
 		font-size: 20px;
 		color:#008CBA;
-		margin-left: 20px;
+		margin-left: 20px;}
 
-	}
+		/*comment out display to see row numbers trouble shooting */
+		.rowNum{
+			display:none;
+		}
 </style>
 <div class="gridContainer clearfix">
 	<br /><a class="custom_button btn red" href="<?php echo site_url('adminController'); ?>"> <- Back</a><br />
@@ -128,7 +141,7 @@ $pageNum = $page_item[0]['pageID'];
 							//creating the rows
 
 							html += '<tr>'+
-										'<td>'+data[i].rowOrder+
+										'<td> <span class="rowNum"> '+data[i].rowOrder+ '</span>' +
 										'<span class="arrow">'+
 											'<a href="javascript:;" class="item-up" id="btnUp"  data="'+data[i].contentID+'">&#8679;</a>'+
 										'</span>'+ 

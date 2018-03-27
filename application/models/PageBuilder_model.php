@@ -1,4 +1,5 @@
 <?php
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class PageBuilder_model extends CI_Model {
 
         public function __construct()
@@ -100,13 +101,21 @@ class PageBuilder_model extends CI_Model {
 			    
 			    $slug = url_title($this->input->post('pageName'), 'dash', TRUE);
 			     //get the filename
+			   	$currentImg;
+			   	
 			   	$img = $this->upload->data();
+			   	if(!empty($this->input->post('previousImg'))){
+			   			$currentImg = $this->input->post('previousImg');
+			   		} else{
+			   			$currentImg = 0;
+			   		}
 
-			   	if (!empty($img)){
+			   	//error_log(json_encode($img));
+			   	if (!empty($img) && $img['file_name'] !== "") {
                     $file_name = $img['file_name'];
-                } else if (!empty($this->input->post('fileName')))
+                } else if ($currentImg !== 0 )
 			     {
-			     	$file_name = $this->input->post('fileName');
+			     	$file_name = $currentImg;
              	} else {
              		$file_name = "";
              	}

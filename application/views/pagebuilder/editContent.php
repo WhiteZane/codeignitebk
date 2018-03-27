@@ -35,11 +35,11 @@ if (isset($this->session->userdata['logged_in'])) {
         <textarea name="cDescription"><?php echo $content_item['cDescription'];?></textarea><br /><br />
       </div>
       <div class="pageColumn_style">
-        <h2> Compare column 1 item</h2><br />
+        <h2> Compare column 1 </h2><br />
         <textarea name="compare1"><?php echo $content_item['compare1'];?></textarea><br /><br />
       </div>
       <div class="pageColumn_style">
-        <h2> Compare column 2 item</h2><br />
+        <h2> Compare column 2 </h2><br />
         <textarea name="compare2"><?php echo $content_item['compare2'];?></textarea><br /><br />
       </div>
     </div>

@@ -50,7 +50,7 @@
 
     <h2> Logo image </h2>
     <p>Current image File: <span style="color:blue;"><?php echo $imageLocation;?></span></p><br /><br />
-    <input type="hidden" name="fileName" value="<?php print_r($imageLocation);?>">
+    <input type="hidden" name="previousImg" value="<?php echo $imageLocation;?>">
    
     <input style="margin-bottom: 25px;" type="file" name="userfile"><br />
     
