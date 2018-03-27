@@ -20,7 +20,6 @@
   // find the last row from previous page 
   $lastRow = (isset(end($rows)['rowOrder'])) ? end($rows)['rowOrder'] : 0; 
   $lastRow += 1;
-  print_r($lastRow);
   ?>
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tinymce/tinymce.min.js"></script> 
 <script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/tiny.js"></script> 

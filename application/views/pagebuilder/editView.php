@@ -161,7 +161,7 @@ $pageNum = $page_item[0]['pageID'];
 				$(".item-down:last").css("visibility", "hidden" );
 			}
 
-			//delete
+			//delete row
 			$('#showdata').on('click', '.item-delete', function(){
 				var id = $(this).attr('data');
 				$('#deleteModal').modal('show');

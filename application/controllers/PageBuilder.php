@@ -334,7 +334,11 @@ class PageBuilder extends CI_Controller {
         }
         //ajax version of delete content
         public function deleteRow (){
+            
+            $this->m->updateRows();
             $result = $this->m->deleteRow();
+            
+
             $msg['success'] = FALSE;
             
             if($result){

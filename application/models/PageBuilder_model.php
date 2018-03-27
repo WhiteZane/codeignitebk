@@ -236,6 +236,24 @@ class PageBuilder_model extends CI_Model {
     					return false;
     				}
     			}
+    			function updateRows(){
+    				$contentID = $this->input->get('id');
+    				$move = 1;
+
+    				//start finding info for page 
+    				 $query = $this->db->select('pageID, rowOrder');
+    				 $query = $this->db->get_where('content', array('contentID' => $contentID));
+    				 $data = $query->row_array();
+
+    				$pageID = $data['pageID'];
+    				$rowNum = (int) $data['rowOrder'];
+
+    				//subtract from each row order greater than the content ID
+    				$this->db->set("rowOrder", "rowOrder - $move", FALSE); 
+				    $this->db->where('pageID', $pageID)->where('contentID >' , $contentID)->where('rowOrder >' , $rowNum);
+	            	$this->db->update('content');
+    				
+    			}
     			//moving row up
     			function rowDown(){
     				$contentID = $this->input->get('id');
@@ -320,6 +338,7 @@ class PageBuilder_model extends CI_Model {
     					return false;
     				}
     			}
+
 
 }
 
