@@ -95,7 +95,7 @@ class PageBuilder extends CI_Controller {
 
             $this->form_validation->set_rules('pageName', 'Page Name', 'trim|required');
             $this->form_validation->set_rules('pageHeaderTitle', 'Page title Header', 'trim|required');
-            $this->form_validation->set_rules('pRowDescription', 'Title column 0', 'trim|alpha_numeric|max_length[30]');
+            //$this->form_validation->set_rules('pRowDescription', 'Title column 0', 'trim|alpha_numeric|max_length[30]');
             $this->form_validation->set_rules('pTableCompare1', 'Title column 1', 'trim|required');
             $this->form_validation->set_rules('pTableCompare2', 'Title column 2', 'trim|required');
             $this->form_validation->set_rules('pageFooter', 'Page Footer', 'trim|required');
@@ -227,7 +227,7 @@ class PageBuilder extends CI_Controller {
                 
                 $this->form_validation->set_rules('pageName', 'Page Name', 'required');
                 $this->form_validation->set_rules('pageHeaderTitle', 'Page title Header', 'required');
-                $this->form_validation->set_rules('pRowDescription', 'Title column 0', 'trim|alpha_numeric|max_length[30]');
+                //$this->form_validation->set_rules('pRowDescription', 'Title column 0', 'trim|alpha_numeric|max_length[30]');
                 $this->form_validation->set_rules('pTableCompare1', 'Title column 1', 'required');
                 $this->form_validation->set_rules('pTableCompare2', 'Title column 2', 'required');
                 $this->form_validation->set_rules('pageFooter', 'Page Footer', 'required');
@@ -368,6 +368,7 @@ class PageBuilder extends CI_Controller {
                     redirect(base_url() . 'adminController');
                 
         }
+        //edit view ajax loads rows
         public function showAllRows(){
           $pageID = $this->uri->segment(2);
           $result = $this->m->showAllRows($pageID);

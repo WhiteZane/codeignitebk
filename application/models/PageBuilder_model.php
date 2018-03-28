@@ -179,9 +179,9 @@ class PageBuilder_model extends CI_Model {
 					//setup row assignment with 1 
 					$firstRow = 1;
 
-					$cDescription = 'Use edit view to edit content';
+					$cDescription = 'This is your first row';
 					$compare1 = 'column1 test';
-					$compare2 = 'column2 test';
+					$compare2 = 'Click over there to edit or delete ->';
 					$pageID = implode(" ", $pageID);
 					echo $pageID;
 

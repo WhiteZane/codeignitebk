@@ -12,8 +12,8 @@ if (isset($this->session->userdata['logged_in'])) {
 $imageLocation = (isset($page_item[0]['imgName'])) ? 'uploads/' .  $page_item[0]['imgName'] : "";
 $pageNum = $page_item[0]['pageID'];
 ?>
-<script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/jquery-3.3.1.min.js"></script>
-<script type = 'text/javascript' src = "<?php echo site_url(); ?>_js/bootstrap.min.js"></script>
+<script type = 'text/javascript' src = "<?php echo site_url();?>_js/jquery-3.3.1.min.js"></script>
+<script type = 'text/javascript' src = "<?php echo site_url();?>_js/bootstrap.min.js"></script>
 <style>
 	.comparetable tr td:nth-child(1){
 	width:100px;	
@@ -55,10 +55,8 @@ $pageNum = $page_item[0]['pageID'];
 	<div class="hero" ><img src = "<?php echo site_url() . $imageLocation; ?>" alt=""></div>
 	
 	
-	<div class="alert alert-success" style="display:none;">
-	<div class="title"><?php echo $page_item[0]['pageHeaderTitle']; ?>	
-	</div>
-	
+	<div class="alert alert-success" style="display:none;"></div>
+	<div class="title"><?php echo $page_item[0]['pageHeaderTitle']; ?>
 	</div>
 	<div class="tableCNT">
 	  	<table class="comparetable" id="comparetable">
@@ -113,7 +111,7 @@ $pageNum = $page_item[0]['pageID'];
 			function showAllRows(){
 				
 				$.ajax({
-					url: '<?php echo base_url() ?>showAllRows/<?php echo $pageNum ?>',
+					url: '<?php echo base_url()?>showAllRows/<?php echo $pageNum?>',
 					async:false,
 					dataType: 'json',
 					success: function(data){
@@ -126,20 +124,37 @@ $pageNum = $page_item[0]['pageID'];
 						var create = location.protocol + '//' + location.host + '/createRow/';
 						var edit = location.protocol + '//' + location.host + '/editContent/';
 						var del = location.protocol + '//' + location.host + '/deleteContent/';
+						console.log(create);
 						//starting the loop for creating ajax rows.
 						for (i=0; i < data.length; i++){
 								
+								//checking the rows
+								if (data[i].contentID === undefined){
+								data[i].rowOrder = "";
+								data[i].contentID = "";
+								data[i].cDescription = "";
+								data[i].compare1 = "";
+								data[i].compare2 = "";
+
+								}
 								//creating the edit and delete buttons content
 								IDcontent = data[i].contentID;
-								IDpage = data[i].pageID;
+								console.log(create);
+								
+								if (data[i].pageID === undefined)
+									{ IDpage = "";
+								}else {
+									IDpage = data[i].pageID;
+								}
+
 											if (IDcontent == 0){
 												editBtn= create + IDpage;
 											} else {
 												editBtn = edit + IDcontent;}
-										deleteBtn = del + IDcontent + '/' + IDpage ;
+										deleteBtn = del + IDcontent + '/' + IDpage;
+
 							
 							//creating the rows
-
 							html += '<tr>'+
 										'<td> <span class="rowNum"> '+data[i].rowOrder+ '</span>' +
 										'<span class="arrow">'+
@@ -180,6 +195,7 @@ $pageNum = $page_item[0]['pageID'];
 				$('#deleteModal').modal('show');
 
 				$('#btnDelete').unbind().click(function(){
+				if (id > 0){
 					$.ajax({
 						type:'ajax',
 						method:'get',
@@ -202,6 +218,10 @@ $pageNum = $page_item[0]['pageID'];
 							alert('error deleting');
 						}
 					});	
+				} else{
+					alert("nothing to delete");
+					$('#deleteModal').modal('hide');
+				}
 				});
 			});
 			
